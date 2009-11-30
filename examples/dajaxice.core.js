@@ -1,2 +1,0 @@
-var Dajaxice={simple:{helloworld:function(b,a){Dajaxice.call("simple.helloworld",b,a)},other:function(b,a){Dajaxice.call("simple.other",b,a)}},api:{firstmethod:function(b,a){Dajaxice.call("api.firstmethod",b,a)}},call:function(b,a,d){var c=[];c.push("callback="+a);if(typeof d=="object"){for(arg in d)c.push(arg+"="+escape(d[arg]));c=c.join("&")}a=new XMLHttpRequest;a.open("POST","/dajaxice/"+b+"/");a.onreadystatechange=function(){this.readyState==XMLHttpRequest.DONE&&eval(this.responseText)};a.send(c)}};
-
