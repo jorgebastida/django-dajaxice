@@ -1,6 +1,6 @@
 Dajaxice is a branch of http://dajaxproject.com with the following aims:
   * JS Framework agnostic (No Prototype, JQuery... needed )
-  * Presentation login outside the views (No presentation code inside ajax functions.)
+  * Presentation logic outside the views (No presentation code inside ajax functions.)
   * Lightweight
   * Crossbrowsing ready
   * Unobtrusive standard-compliant (W3C) XMLHttpRequest 1.0 object usage.
