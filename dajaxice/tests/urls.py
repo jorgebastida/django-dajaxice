@@ -36,5 +36,5 @@ from django.conf import settings
 
 urlpatterns = patterns('',  
     #Dajaxice URLS
-	(r'^%s/' % settings.DAJAXICE_MEDIA_PREFIX, include('dajaxice.urls')),
+    (r'^%s/' % settings.DAJAXICE_MEDIA_PREFIX, include('dajaxice.urls')),
 )

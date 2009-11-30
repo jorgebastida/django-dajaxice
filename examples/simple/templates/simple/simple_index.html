@@ -7,13 +7,7 @@
 	<script src="http://xmlhttprequest.googlecode.com/svn/trunk/source/XMLHttpRequest.js" type="text/javascript" charset="utf-8"></script>
 	{% dajaxice_js_import %}
 	<script type="text/javascript" charset="utf-8">
-		function example1(){
-			Dajaxice.simple.example1('callback_example1');
-		}
-		function example2(){
-			Dajaxice.simple.example2('callback_example2');
-		}
-		
+	
 		function callback_example1(data){
 			if(data!='DAJAXICE_EXCEPTION'){
 				alert(data.message);
@@ -35,7 +29,7 @@
 	</script>
 </head>
 <body>
-	<input type="button" name="some_name" value="Call Example 1! (String)" onclick="example1();" id="some_name"><br/>
-	<input type="button" name="some_name" value="Call Example 2! (Number list)" onclick="example2();" id="some_name"><br/>
+	<input type="button" name="some_name" value="Call Example 1! (String)" onclick="Dajaxice.simple.example1('callback_example1');" id="some_name"><br/>
+	<input type="button" name="some_name" value="Call Example 2! (Number list)" onclick="Dajaxice.simple.example2('callback_example2');" id="some_name"><br/>
 </body>
 </html>
