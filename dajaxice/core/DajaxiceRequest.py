@@ -70,10 +70,6 @@ class DajaxiceRequest(object):
         return data
         
     @staticmethod
-    def get_error_callback():
-        return getattr(settings, 'DAJAXICE_ERROR_CALLBACK', None)
-        
-    @staticmethod
     def get_media_prefix():
         return getattr(settings, 'DAJAXICE_MEDIA_PREFIX', "dajaxice")
         
