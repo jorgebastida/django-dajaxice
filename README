@@ -5,63 +5,6 @@ Dajaxice is a branch of http://dajaxproject.com with the following aims:
   * Crossbrowsing ready
   * Unobtrusive standard-compliant (W3C) XMLHttpRequest 1.0 object usage.
 
-## Why should I use dajaxice?
-  * You can use your favourite JS Framework.
-  * Cleaner code. Your ajax functions work uniform.
-  * All your presentation logic resides in JS
-
-## Usage
-
-Create a normal view, inside your app ajax.py file. The return data should be json.
-In this case our app name is 'simple'
-
-from django.utils import simplejson
-
-def helloworld(request):
-    return simplejson.dumps({'message':'hello world','numbers':[1,2,3]})
-
-
-Add your helloworld function to your *settings.DAJAXICE_FUNCTIONS*:
-
-DAJAXICE_FUNCTIONS = ('simple.ajax.helloworld',)
-
-
-Now, you can *easily* call your function inside your JS code:
-
-Dajaxice.simple.helloworld('callback_me');
-
-
-The function *callback_me* is your JS function that will use *your helloworld return data*.
-
-And if you want to send data to yours helloworld ...
-
-Dajaxice.simple.helloworld('callback_me',{'name':'Peter','id':325});
-
-
-## Dajax vs DajaxICE
-
-Framework Agnostic:
-  * DajaxICE doesn't use any JS Framework. The only library required is XMLHttpRequest.js, an standard-compliant cross-browser XMLHttpRequest object implementation.
-
-No Presentation logic into the views:
-  * The main purpose of dajaxice is to decouple the presentation logic from ajax.py views. Ajaxice's aim is returning data, not how it will be displayed.
-
-Focused on speed:
-  * Faster responses than dajax
-
-Crossbrowsing ready:
-  * XMLHttpRequest library supports all mayor browsers.
-
-
-
-## Generating static JS files to production =
-Basic usage:
-
-python manage.py generate_static_dajaxice > dajaxice.core.js
-
-
-Compiling using Google closure http://code.google.com/intl/es/closure/ :
-
-The Closure Compiler compiles JavaScript into compact, high-performance code. The compiler removes dead code and rewrites and minimizes what's left so that it downloads and runs quickly. It also also checks syntax, variable references, and types, and warns about common JavaScript pitfalls. These checks and optimizations help you write apps that are less buggy and easier to maintain.
-
-python manage.py generate_static_dajaxice --compile closure > dajaxice.core.js
+More information http://wiki.github.com/jorgebastida/dajaxice
+Intallation http://wiki.github.com/jorgebastida/dajaxice/installation
+Examples http://github.com/jorgebastida/dajaxice/tree/master/examples/
