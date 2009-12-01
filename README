@@ -1,4 +1,4 @@
-Dajaxice is a branch of http://dajaxproject.com with the following aims:
+Dajaxice is a branch of Dajax 0.7.5.1 with the following aims:
   * JS Framework agnostic (No Prototype, JQuery... needed )
   * Presentation logic outside the views (No presentation code inside ajax functions.)
   * Lightweight
