@@ -72,7 +72,7 @@ setup(
 	author = "Benito Jorge Bastida Perez",
 	author_email = "jorge@thecodefarm.com",
 	description = "Agnostic and easy to use ajax library for django",
-	download_url = "http://dajaxice.googlecode.com/files/dajaxice-0.0.1.tar.gz",
+	download_url = "http://cloud.github.com/downloads/jorgebastida/dajaxice/dajaxice-0.0.1.tar.gz",
 	url = "http://dajaxproject.com/ice",
 	packages=packages,
 	data_files=data_files,
