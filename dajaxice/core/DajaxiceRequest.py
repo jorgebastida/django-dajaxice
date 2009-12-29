@@ -190,7 +190,8 @@ class DajaxiceRequest(object):
             try:
                 argv = simplejson.loads(self.request.POST.get('argv'))
                 argv = safe_dict(argv)
-            except:
+            except Exception, e:
+                logging.error('DAJAXICE argv exception %s' % e)
                 argv = {}
                 
             logging.debug('DAJAXICE callback %s' % callback)
