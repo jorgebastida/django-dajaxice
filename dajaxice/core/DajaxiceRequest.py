@@ -186,18 +186,21 @@ class DajaxiceRequest(object):
         if self._is_callable():
             logging.debug('DAJAXICE Function %s is callable' % self.full_name)
             callback = self.request.POST.get('callback')
+            
             try:
                 argv = simplejson.loads(self.request.POST.get('argv'))
                 argv = safe_dict(argv)
             except:
-                argv = []
-            logging.debug('DAJAXICE Callback %s' % callback)
+                argv = {}
+                
+            logging.debug('DAJAXICE callback %s' % callback)
+            logging.debug('DAJAXICE argv %s' % argv)
+            
             try:
                 #1. get the function
                 thefunction = self._get_ajax_function()
                 #2. call the function
                 response = '%s(%s)' % ( callback, thefunction(self.request, **argv) )
-                
             except Exception, e:
                 logging.error('DAJAXICE Exception %s' % str(e))
                 if DajaxiceRequest.get_debug():
