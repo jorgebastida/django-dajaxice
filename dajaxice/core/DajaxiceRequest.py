@@ -33,6 +33,7 @@
 
 import os
 import sets
+import logging
 from django.conf import settings
 from django.http import HttpResponse
 
@@ -40,9 +41,11 @@ from dajaxice.exceptions import FunctionNotCallableError
 
 try:
     from django.utils import importlib
-    DAJAX_MODERN_IMPORT = True
+    DAJAXICE_MODERN_IMPORT = True
 except:
-    DAJAX_MODERN_IMPORT = False
+    DAJAXICE_MODERN_IMPORT = False
+
+logging.info('DAJAXICE DAJAXICE_MODERN_IMPORT=%s' % DAJAXICE_MODERN_IMPORT)
 
 class DajaxiceRequest(object):
     
@@ -102,7 +105,7 @@ class DajaxiceRequest(object):
         Return a callable ajax function.
         This function should be imported according the Django version.
         """
-        if DAJAX_MODERN_IMPORT:
+        if DAJAXICE_MODERN_IMPORT:
             return self._modern_get_ajax_function()
         else:
             return self._old_get_ajax_function()
@@ -161,7 +164,9 @@ class DajaxiceRequest(object):
         Process the dajax request calling the apropiate method.
         """
         if self._is_callable():
+            logging.debug('DAJAXICE Function %s is callable' % self.full_name)
             callback = self.request.POST.get('callback')
+            logging.debug('DAJAXICE Callback %s' % callback)
             try:
                 #1. get the function
                 thefunction = self._get_ajax_function()
@@ -169,13 +174,13 @@ class DajaxiceRequest(object):
                 response = '%s(%s)' % ( callback, thefunction(self.request) )
                 
             except Exception, e:
-                print e
+                logging.error('DAJAXICE Exception %s' % str(e))
                 if DajaxiceRequest.get_debug():
                     self._print_exception(e)
                     
                 response = '%s(%s)' % ( callback, DajaxiceRequest.get_exception_message())
-                
             return HttpResponse(response, mimetype="application/x-json")
             
         else:
+            logging.debug('DAJAXICE Function %s is not callable' % self.full_name)
             raise FunctionNotCallableError(name=self.full_name)
