@@ -39,11 +39,17 @@ from django.http import HttpResponse
 
 from dajaxice.exceptions import FunctionNotCallableError
 
+# Python 2.7 has an importlib with import_module; for older Pythons,
+# Django's bundled copy provides it.
 try:
-    from django.utils import importlib
+    from importlib import import_module
     DAJAXICE_MODERN_IMPORT = True
 except:
-    DAJAXICE_MODERN_IMPORT = False
+    try:
+        from django.utils import importlib
+        DAJAXICE_MODERN_IMPORT = True
+    except:
+        DAJAXICE_MODERN_IMPORT = False
 
 logging.info('DAJAXICE DAJAXICE_MODERN_IMPORT=%s' % DAJAXICE_MODERN_IMPORT)
 
