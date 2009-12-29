@@ -185,6 +185,7 @@ class DajaxiceRequest(object):
                     self._print_exception(e)
                     
                 response = '%s(%s)' % ( callback, DajaxiceRequest.get_exception_message())
+            logging.info('DAJAXICE response: %s' % response)
             return HttpResponse(response, mimetype="application/x-json")
             
         else:
