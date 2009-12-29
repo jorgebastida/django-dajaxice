@@ -13,13 +13,7 @@ var Dajaxice = {
     {
         var send_data = [];
         send_data.push('callback='+dajaxice_callback);
-        if(typeof(argv) == 'object')
-        {
-            for(arg in argv)
-            {
-                send_data.push(arg+'='+escape(argv[arg]));
-            }
-        }
+        send_data.push('argv='+JSON.stringify(argv));
         send_data = send_data.join('&');
         var oXMLHttpRequest = new XMLHttpRequest;
         oXMLHttpRequest.open('POST', '/{{DAJAXICE_URL_PREFIX}}/'+dajaxice_function+'/');

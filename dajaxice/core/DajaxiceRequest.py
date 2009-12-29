@@ -36,6 +36,8 @@ import sets
 import logging
 from django.conf import settings
 from django.http import HttpResponse
+from django.utils import simplejson
+
 
 from dajaxice.exceptions import FunctionNotCallableError
 
@@ -53,6 +55,18 @@ except:
 
 logging.info('DAJAXICE DAJAXICE_MODERN_IMPORT=%s' % DAJAXICE_MODERN_IMPORT)
 
+def safe_dict(d): 
+    """
+    Recursively clone json structure with UTF-8 dictionary keys
+    http://www.gossamer-threads.com/lists/python/bugs/684379
+    """
+    if isinstance(d, dict): 
+        return dict([(k.encode('utf-8'), safe_dict(v)) for k,v in d.iteritems()]) 
+    elif isinstance(d, list): 
+        return [safe_dict(x) for x in d] 
+    else: 
+        return d
+                        
 class DajaxiceRequest(object):
     
     def __init__(self, request, call):
@@ -172,12 +186,17 @@ class DajaxiceRequest(object):
         if self._is_callable():
             logging.debug('DAJAXICE Function %s is callable' % self.full_name)
             callback = self.request.POST.get('callback')
+            try:
+                argv = simplejson.loads(self.request.POST.get('argv'))
+                argv = safe_dict(argv)
+            except:
+                argv = []
             logging.debug('DAJAXICE Callback %s' % callback)
             try:
                 #1. get the function
                 thefunction = self._get_ajax_function()
                 #2. call the function
-                response = '%s(%s)' % ( callback, thefunction(self.request) )
+                response = '%s(%s)' % ( callback, thefunction(self.request, **argv) )
                 
             except Exception, e:
                 logging.error('DAJAXICE Exception %s' % str(e))
