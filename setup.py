@@ -67,13 +67,13 @@ if len(sys.argv) > 1 and sys.argv[1] == 'bdist_wininst':
 
 
 setup(
-	name = "dajaxice",
-	version = "0.0.1",
+	name = "django-dajaxice",
+	version = "0.1.0",
 	author = "Benito Jorge Bastida Perez",
 	author_email = "jorge@thecodefarm.com",
 	description = "Agnostic and easy to use ajax library for django",
-	download_url = "http://cloud.github.com/downloads/jorgebastida/dajaxice/dajaxice-0.0.1.tar.gz",
-	url = "http://dajaxproject.com/ice",
+	download_url = "http://cloud.github.com/downloads/jorgebastida/django-dajaxice/django-dajaxice-0.1.0.tar.gz",
+	url = "http://dajaxproject.com",
 	packages=packages,
 	data_files=data_files,
 	cmdclass = cmdclasses,
