@@ -1,4 +1,9 @@
-Dajaxice is a branch of Dajax 0.7.5.1 with the following aims:
+Dajaxice is the communication core of dajaxproject. It's main goal is to trivialize the asynchronous communication within the django server side code and your js code.
+
+It's an 'agnostic JS framework' approach and focus on decoupling the presentation logic. dajaxice only require 5 minutes
+to start working.
+
+Dajaxice has the following aims:
   * Isolate the communication between the client and the server.
   * JS Framework agnostic (No Prototype, JQuery... needed ).
   * Presentation logic outside the views (No presentation code inside ajax functions).
@@ -6,9 +11,9 @@ Dajaxice is a branch of Dajax 0.7.5.1 with the following aims:
   * Crossbrowsing ready.
   * Unobtrusive standard-compliant (W3C) XMLHttpRequest 1.0 object usage.
 
-More information http://wiki.github.com/jorgebastida/dajaxice
-Intallation http://wiki.github.com/jorgebastida/dajaxice/installation
-Examples http://github.com/jorgebastida/dajaxice/tree/master/examples/
-Available settings http://wiki.github.com/jorgebastida/dajaxice/available-settings
-Production environment http://wiki.github.com/jorgebastida/dajaxice/production-environment
-Exception handling http://wiki.github.com/jorgebastida/dajaxice/exception-handling
+More information http://wiki.github.com/jorgebastida/django-dajaxice
+Intallation http://wiki.github.com/jorgebastida/django-dajaxice/installation
+Examples http://github.com/jorgebastida/django-dajaxice/tree/master/examples/
+Available settings http://wiki.github.com/jorgebastida/django-dajaxice/available-settings
+Production environment http://wiki.github.com/jorgebastida/django-dajaxice/production-environment
+Exception handling http://wiki.github.com/jorgebastida/django-dajaxice/exception-handling
