@@ -67,7 +67,7 @@ class DjangoIntegrationTest(TestCase):
         response = self.client.post('/dajaxice/tests.test_foo_with_params/',{'callback':'my_callback', 'argv': '{"param1":"value1"}'})
         
         self.failUnlessEqual(response.status_code, 200)
-        self.failUnlessEqual(response.content,'my_callback({"param1": ["value1"]})')
+        self.failUnlessEqual(response.content,'my_callback("value1")')
         
     def test_bad_function(self):
         settings.DAJAXICE_FUNCTIONS = ('tests.ajax.test_ajax_exception',)
