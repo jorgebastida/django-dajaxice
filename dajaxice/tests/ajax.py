@@ -43,5 +43,5 @@ def test_ajax_exception(request):
 def test_foo(request):
     return ""
     
-def test_foo_with_params(request):
-    return simplejson.dumps(dict(request.POST))
+def test_foo_with_params(request, param1):
+    return simplejson.dumps(param1)
