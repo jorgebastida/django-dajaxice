@@ -37,7 +37,7 @@ from django.conf import settings
 
 from dajaxice.exceptions import FunctionNotCallableError
 from dajaxice.core import DajaxiceRequest
-from dajaxice.core.DajaxiceRequest import DAJAX_MODERN_IMPORT
+from dajaxice.core.DajaxiceRequest import DAJAXICE_MODERN_IMPORT
 
 class DjangoIntegrationTest(TestCase):
     
