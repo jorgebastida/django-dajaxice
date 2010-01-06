@@ -10,6 +10,8 @@ Dajaxice has the following aims:
   * Crossbrowsing ready.
   * Unobtrusive standard-compliant (W3C) XMLHttpRequest 1.0 object usage.
 
+Official site http://dajaxproject.com
+
 More information http://wiki.github.com/jorgebastida/django-dajaxice
 Intallation http://wiki.github.com/jorgebastida/django-dajaxice/installation
 Examples http://github.com/jorgebastida/django-dajaxice/tree/master/examples/
