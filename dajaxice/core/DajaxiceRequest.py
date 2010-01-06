@@ -187,11 +187,15 @@ class DajaxiceRequest(object):
             logging.debug('DAJAXICE Function %s is callable' % self.full_name)
             callback = self.request.POST.get('callback')
             
-            try:
-                argv = simplejson.loads(self.request.POST.get('argv'))
-                argv = safe_dict(argv)
-            except Exception, e:
-                logging.error('DAJAXICE argv exception %s' % e)
+            argv = self.request.POST.get('argv')
+            if argv != 'undefined':
+                try:
+                    argv = simplejson.loads(self.request.POST.get('argv'))
+                    argv = safe_dict(argv)
+                except Exception, e:
+                    logging.error('DAJAXICE argv exception %s' % e)
+                    argv = {}
+            else:
                 argv = {}
                 
             logging.debug('DAJAXICE callback %s' % callback)
