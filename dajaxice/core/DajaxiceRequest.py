@@ -114,6 +114,14 @@ class DajaxiceRequest(object):
     def get_exception_message():
         return getattr(settings, 'DAJAXICE_EXCEPTION_MESSAGE', "'DAJAXICE_EXCEPTION'")
     
+    @staticmethod
+    def get_xmlhttprequest_js_import():
+        return getattr(settings, 'DAJAXICE_XMLHTTPREQUEST_JS_IMPORT', True )
+        
+    @staticmethod
+    def get_json2_js_import():
+        return getattr(settings, 'DAJAXICE_JSON2_JS_IMPORT', True )
+        
     def _is_callable(self):
         """
         Return if the request function was registered.

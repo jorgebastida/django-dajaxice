@@ -50,5 +50,9 @@ def js_core(request):
     """
     Return the dajax JS code according settings.DAJAXICE_FUNCTIONS registered functions.
     """
-    data = {'dajaxice_js_functions':DajaxiceRequest.get_js_functions(), 'DAJAXICE_URL_PREFIX': DajaxiceRequest.get_media_prefix()}
+    data = {'dajaxice_js_functions':DajaxiceRequest.get_js_functions(),
+            'DAJAXICE_URL_PREFIX': DajaxiceRequest.get_media_prefix(),
+            'DAJAXICE_XMLHTTPREQUEST_JS_IMPORT':DajaxiceRequest.get_xmlhttprequest_js_import(),
+            'DAJAXICE_JSON2_JS_IMPORT':DajaxiceRequest.get_json2_js_import()
+             }
     return render_to_response('dajaxice/dajaxice.core.js', data )
