@@ -18,3 +18,8 @@ Examples http://github.com/jorgebastida/django-dajaxice/tree/master/examples/
 Available settings http://wiki.github.com/jorgebastida/django-dajaxice/available-settings
 Production environment http://wiki.github.com/jorgebastida/django-dajaxice/production-environment
 Exception handling http://wiki.github.com/jorgebastida/django-dajaxice/exception-handling
+
+Dajaxice thanks:
+    - Angel Abad for the package distribution.
+    - XmlHttpRequest.js project (License inside COPYING)
+    - json2.js Library (License inside COPYING)

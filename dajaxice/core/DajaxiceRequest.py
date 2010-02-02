@@ -111,16 +111,17 @@ class DajaxiceRequest(object):
         return getattr(settings, 'DAJAXICE_CACHE_CONTROL', 5 * 24 * 60 * 60 )
     
     @staticmethod
-    def get_exception_message():
-        return getattr(settings, 'DAJAXICE_EXCEPTION_MESSAGE', "'DAJAXICE_EXCEPTION'")
-    
-    @staticmethod
     def get_xmlhttprequest_js_import():
+        print "leooo"
         return getattr(settings, 'DAJAXICE_XMLHTTPREQUEST_JS_IMPORT', True )
         
     @staticmethod
     def get_json2_js_import():
         return getattr(settings, 'DAJAXICE_JSON2_JS_IMPORT', True )
+    
+    @staticmethod
+    def get_exception_message():
+        return u"'DAJAXICE_EXCEPTION'"
         
     def _is_callable(self):
         """
