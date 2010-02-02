@@ -47,7 +47,11 @@ class Command(BaseCommand):
     
     def handle(self, *app_labels, **options):
         compile_output = options.get('compile','yes')
-        data = {'dajaxice_js_functions':DajaxiceRequest.get_js_functions(), 'DAJAXICE_URL_PREFIX': DajaxiceRequest.get_media_prefix()}
+        data = {'dajaxice_js_functions':DajaxiceRequest.get_js_functions(),
+            'DAJAXICE_URL_PREFIX': DajaxiceRequest.get_media_prefix(),
+            'DAJAXICE_XMLHTTPREQUEST_JS_IMPORT':DajaxiceRequest.get_xmlhttprequest_js_import(),
+            'DAJAXICE_JSON2_JS_IMPORT':DajaxiceRequest.get_json2_js_import()
+             }
         js = render_to_string('dajaxice/dajaxice.core.js', data )
         if compile_output.lower() == "closure":
             print self.complie_js_with_closure(js)

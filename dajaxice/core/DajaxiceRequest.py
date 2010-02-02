@@ -112,7 +112,6 @@ class DajaxiceRequest(object):
     
     @staticmethod
     def get_xmlhttprequest_js_import():
-        print "leooo"
         return getattr(settings, 'DAJAXICE_XMLHTTPREQUEST_JS_IMPORT', True )
         
     @staticmethod
