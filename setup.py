@@ -68,7 +68,7 @@ if len(sys.argv) > 1 and sys.argv[1] == 'bdist_wininst':
 
 setup(
 	name = "django-dajaxice",
-	version = "0.1.0",
+	version = "0.1.1",
 	author = "Benito Jorge Bastida Perez",
 	author_email = "jorge@thecodefarm.com",
 	description = "Agnostic and easy to use ajax library for django",
