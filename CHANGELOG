@@ -1,3 +1,16 @@
+dajaxICE (0.1.2) stable; urgency=high
+
+	- New and cleaned setup.py 
+		
+ -- Benito Jorge Bastida <jorge@thecodefarm.com>  Tue, 23 Feb 2010 16:00:00 +0100
+ 
+dajaxICE (0.1.1) stable; urgency=high
+
+	- json2.js and XMLHttpRequest libs included
+	- New settings DAJAXICE_XMLHTTPREQUEST_JS_IMPORT and DAJAXICE_JSON2_JS_IMPORT
+		
+ -- Benito Jorge Bastida <jorge@thecodefarm.com>  Tue, 16 Feb 2010 16:00:00 +0100
+
 dajaxICE (0.1.0) stable; urgency=high
 
 	- dajaxice AJAX functions now receive parameters as function arguments.
