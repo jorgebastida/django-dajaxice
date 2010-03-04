@@ -17,6 +17,7 @@ var Dajaxice = {
         send_data = send_data.join('&');
         var oXMLHttpRequest = new XMLHttpRequest;
         oXMLHttpRequest.open('POST', '/{{DAJAXICE_URL_PREFIX}}/'+dajaxice_function+'/');
+        oXMLHttpRequest.setRequestHeader("X-Requested-With", "XMLHttpRequest");
         oXMLHttpRequest.onreadystatechange = function() {
             if (this.readyState == XMLHttpRequest.DONE) {
                 eval(this.responseText);
