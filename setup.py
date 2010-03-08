@@ -10,6 +10,7 @@ setup(
     url = "http://dajaxproject.com",
     packages= ['dajaxice', 'dajaxice.templatetags', 'dajaxice.core', 'dajaxice.management'],
     package_data = {'dajaxice': ['templates/dajaxice/*']},
+    zip_safe = False,
     classifiers=['Development Status :: 4 - Beta',
                 'Environment :: Web Environment',
                 'Framework :: Django',
