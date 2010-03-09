@@ -4,7 +4,7 @@ var Dajaxice = {
             {% for function in functions %}
                 {{ function }}: function(callback_function,argv){
                     Dajaxice.call('{{module}}.{{function}}',callback_function,argv);
-	            }{% ifnotequal forloop.counter functions|length %},{% endifnotequal %}
+	            }{% if not forloop.last %},{% endif %}
             {% endfor %}
         },
     {% endfor %}
