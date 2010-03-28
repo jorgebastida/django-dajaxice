@@ -56,4 +56,4 @@ def js_core(request):
             'DAJAXICE_JSON2_JS_IMPORT':DajaxiceRequest.get_json2_js_import(),
             'DAJAXICE_EXCEPTION':DajaxiceRequest.get_exception_message()
              }
-    return render_to_response('dajaxice/dajaxice.core.js', data )
+    return render_to_response('dajaxice/dajaxice.core.js', data, mimetype="text/javascript" )

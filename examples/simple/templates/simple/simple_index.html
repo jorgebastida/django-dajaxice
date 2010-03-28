@@ -34,12 +34,23 @@
 				alert('Error');
 			}
 		}
+		
+		function callback_example_error(data){
+		    if(data!=Dajaxice.EXCEPTION){
+				alert(data);
+			}
+			else{
+				alert('Error');
+			}
+		}
 	
 	</script>
 </head>
 <body>
-	<input type="button" name="some_name" value="Call Example 1! (String)" onclick="Dajaxice.simple.example1('callback_example1');" id="some_name"><br/>
-	<input type="button" name="some_name" value="Call Example 2! (Number list)" onclick="Dajaxice.simple.example2('callback_example2');" id="some_name"><br/>
-	<input type="button" name="some_name" value="Call Example 3! (Sending Array)" onclick="Dajaxice.simple.example3('callback_example3',{'data':[1,2,3],'name':'Peter'});" id="some_name"><br/>
+<h2>dajaxice examples</h2>
+<input type="button" name="some_name" value="Call Example 1! (String)" onclick="Dajaxice.simple.example1('callback_example1');" id="some_name" /><br/>
+<input type="button" name="some_name" value="Call Example 2! (Number list)" onclick="Dajaxice.simple.example2('callback_example2');" id="some_name" /><br/>
+<input type="button" name="some_name" value="Call Example 3! (Sending Array)" onclick="Dajaxice.simple.example3('callback_example3',{'data':[1,2,3],'name':'Peter'});" id="some_name"/><br/>
+<input type="button" name="some_name" value="Raise Exception" onclick="Dajaxice.simple.error_example('callback_example_error');" id="some_name" />
 </body>
 </html>

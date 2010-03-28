@@ -206,7 +206,6 @@ class DajaxiceRequest(object):
                 thefunction = self._get_ajax_function()
                 response = '%s(%s)' % ( callback, thefunction(self.request, **argv) )
             except Exception, e:
-                #trace = ''.join(traceback.format_exception(sys.exc_info()[0],sys.exc_info()[1],sys.exc_info()[2]))
                 trace = '\n'.join(traceback.format_exception(*sys.exc_info()))
                 log.error(trace)
                 if DajaxiceRequest.get_debug():
