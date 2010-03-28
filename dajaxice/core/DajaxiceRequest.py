@@ -32,12 +32,16 @@
 #----------------------------------------------------------------------
 
 import os
+import sys
 import sets
 import logging
-from django.conf import settings
-from django.http import HttpResponse
-from django.utils import simplejson
+import traceback
 
+from django.conf import settings
+from django.utils import simplejson
+from django.http import HttpResponse
+
+log = logging.getLogger('dajaxice.DajaxiceRequest')
 
 from dajaxice.exceptions import FunctionNotCallableError
 
@@ -53,7 +57,7 @@ except:
     except:
         DAJAXICE_MODERN_IMPORT = False
 
-logging.info('DAJAXICE DAJAXICE_MODERN_IMPORT=%s' % DAJAXICE_MODERN_IMPORT)
+log.info('DAJAXICE_MODERN_IMPORT=%s' % DAJAXICE_MODERN_IMPORT)
 
 def safe_dict(d): 
     """
@@ -120,7 +124,7 @@ class DajaxiceRequest(object):
     
     @staticmethod
     def get_exception_message():
-        return u"'DAJAXICE_EXCEPTION'"
+        return getattr(settings, 'DAJAXICE_EXCEPTION', u"'DAJAXICE_EXCEPTION'" )
         
     def _is_callable(self):
         """
@@ -176,23 +180,12 @@ class DajaxiceRequest(object):
         mod = importlib.import_module(self.module_import_name)
         return mod.__getattribute__(self.method)
     
-    def _print_exception(self,e):
-        import traceback
-        print ""
-        print "#"*60
-        print "uri:      %s" % self.request.build_absolute_uri()
-        print "function: %s" % self.full_name
-        print "#"*60
-        print ""
-        traceback.print_exc(e)
-        print ""
-        
     def process(self):
         """
         Process the dajax request calling the apropiate method.
         """
         if self._is_callable():
-            logging.debug('DAJAXICE Function %s is callable' % self.full_name)
+            log.debug('Function %s is callable' % self.full_name)
             callback = self.request.POST.get('callback')
             
             argv = self.request.POST.get('argv')
@@ -201,28 +194,48 @@ class DajaxiceRequest(object):
                     argv = simplejson.loads(self.request.POST.get('argv'))
                     argv = safe_dict(argv)
                 except Exception, e:
-                    logging.error('DAJAXICE argv exception %s' % e)
+                    log.error('argv exception %s' % e)
                     argv = {}
             else:
                 argv = {}
                 
-            logging.debug('DAJAXICE callback %s' % callback)
-            logging.debug('DAJAXICE argv %s' % argv)
+            log.debug('callback %s' % callback)
+            log.debug('argv %s' % argv)
             
             try:
-                #1. get the function
                 thefunction = self._get_ajax_function()
-                #2. call the function
                 response = '%s(%s)' % ( callback, thefunction(self.request, **argv) )
             except Exception, e:
-                logging.error('DAJAXICE Exception %s' % str(e))
+                #trace = ''.join(traceback.format_exception(sys.exc_info()[0],sys.exc_info()[1],sys.exc_info()[2]))
+                trace = '\n'.join(traceback.format_exception(*sys.exc_info()))
+                log.error(trace)
                 if DajaxiceRequest.get_debug():
-                    self._print_exception(e)
-                    
-                response = '%s(%s)' % ( callback, DajaxiceRequest.get_exception_message())
-            logging.info('DAJAXICE response: %s' % response)
+                    response = 'alert("%s")' % trace.replace('"','\\"').replace('\n','\\n')
+                else:
+                    response = '%s(%s)' % ( callback, DajaxiceRequest.get_exception_message())
+                    self.notify_exception(self.request, sys.exc_info())
+                
+            log.info('response: %s' % response)
             return HttpResponse(response, mimetype="application/x-json")
             
         else:
-            logging.debug('DAJAXICE Function %s is not callable' % self.full_name)
+            log.debug('Function %s is not callable' % self.full_name)
             raise FunctionNotCallableError(name=self.full_name)
+    
+    def notify_exception(self, request, exc_info):
+        """
+        Send Exception traceback to ADMINS
+        Similar to BaseHandler.handle_uncaught_exception
+        """
+        from django.conf import settings
+        from django.core.mail import mail_admins
+
+        subject = 'Error (%s IP): %s' % ((request.META.get('REMOTE_ADDR') in settings.INTERNAL_IPS and 'internal' or 'EXTERNAL'), request.path)
+        try:
+            request_repr = repr(request)
+        except:
+            request_repr = "Request repr() unavailable"
+        
+        trace = '\n'.join(traceback.format_exception(*(exc_info or sys.exc_info())))
+        message = "%s\n\n%s" % (trace, request_repr)
+        mail_admins(subject, message, fail_silently=True)

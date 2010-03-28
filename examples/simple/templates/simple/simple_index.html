@@ -8,7 +8,7 @@
 	<script type="text/javascript" charset="utf-8">
 	
 		function callback_example1(data){
-			if(data!='DAJAXICE_EXCEPTION'){
+			if(data!=Dajaxice.EXCEPTION){
 				alert(data.message);
 			}
 			else{
@@ -16,7 +16,7 @@
 			}
 		}
 		function callback_example2(data){
-			if(data!='DAJAXICE_EXCEPTION'){
+			if(data!=Dajaxice.EXCEPTION){
 				for (var i=0; i < data.numbers.length; i++) {
 					alert(data.numbers[i]);
 				}
@@ -27,7 +27,7 @@
 		}
 		
 		function callback_example3(data){
-			if(data!='DAJAXICE_EXCEPTION'){
+			if(data!=Dajaxice.EXCEPTION){
 				alert(data.result);
 			}
 			else{

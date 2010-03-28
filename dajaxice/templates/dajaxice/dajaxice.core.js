@@ -4,7 +4,7 @@ var Dajaxice = {
             {% for function in functions %}
                 {{ function }}: function(callback_function,argv){
                     Dajaxice.call('{{module}}.{{function}}',callback_function,argv);
-	            }{% ifnotequal forloop.counter functions|length %},{% endifnotequal %}
+	            }{% if not forloop.last %},{% endif %}
             {% endfor %}
         },
     {% endfor %}
@@ -13,7 +13,7 @@ var Dajaxice = {
     {
         var send_data = [];
         send_data.push('callback='+dajaxice_callback);
-        send_data.push('argv='+JSON.stringify(argv));
+        send_data.push('argv='+escape(JSON.stringify(argv)));
         send_data = send_data.join('&');
         var oXMLHttpRequest = new XMLHttpRequest;
         oXMLHttpRequest.open('POST', '/{{DAJAXICE_URL_PREFIX}}/'+dajaxice_function+'/');
@@ -26,6 +26,7 @@ var Dajaxice = {
         oXMLHttpRequest.send(send_data);
     }
 };
+Dajaxice.EXCEPTION = {{ DAJAXICE_EXCEPTION|safe }};
 window['Dajaxice'] = Dajaxice;
 
 {% comment %}

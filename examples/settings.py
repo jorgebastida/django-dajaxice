@@ -83,5 +83,7 @@ INSTALLED_APPS = (
 DAJAXICE_FUNCTIONS = ('simple.ajax.example1','simple.ajax.example2','simple.ajax.example3',)
                     
 DAJAXICE_MEDIA_PREFIX = "dajaxice"
-DAJAXICE_DEBUG = True
+DAJAXICE_DEBUG = False
 
+import logging
+logging.basicConfig(level=logging.DEBUG)
