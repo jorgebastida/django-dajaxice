@@ -1,3 +1,16 @@
+dajaxice (0.1.3) stable; urgency=high
+
+	- CSRF middleware buf fixed
+	- Improved production and development logging
+	- New custom Exception message
+	- New notify_exception to send traceback to admins
+	- Fixed semicolon issues
+	- Fixed unicode errors
+	- Fixed generate_static_dajaxice before easy_install usage
+	- Fixed IE6 bug in dajaxice.core.js
+		
+ -- Benito Jorge Bastida <jorge@thecodefarm.com>  Tue, 28 Mar 2010 22:30:00 +0100
+
 dajaxICE (0.1.2) stable; urgency=high
 
 	- New and cleaned setup.py 
