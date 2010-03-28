@@ -84,6 +84,7 @@ DAJAXICE_FUNCTIONS = ('simple.ajax.example1','simple.ajax.example2','simple.ajax
                     
 DAJAXICE_MEDIA_PREFIX = "dajaxice"
 DAJAXICE_DEBUG = False
+#DAJAXICE_NOTIFY_EXCEPTIONS = True
 
 import logging
 logging.basicConfig(level=logging.DEBUG)

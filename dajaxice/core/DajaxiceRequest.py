@@ -109,6 +109,10 @@ class DajaxiceRequest(object):
         return getattr(settings, 'DAJAXICE_DEBUG', True )
     
     @staticmethod
+    def get_notify_exceptions():
+        return getattr(settings, 'DAJAXICE_NOTIFY_EXCEPTIONS', False )
+    
+    @staticmethod
     def get_cache_control():
         if settings.DEBUG:
             return 0
@@ -212,6 +216,8 @@ class DajaxiceRequest(object):
                     response = 'alert("%s")' % trace.replace('"','\\"').replace('\n','\\n')
                 else:
                     response = '%s(%s)' % ( callback, DajaxiceRequest.get_exception_message())
+                    
+                if DajaxiceRequest.get_notify_exceptions():
                     self.notify_exception(self.request, sys.exc_info())
                 
             log.info('response: %s' % response)
