@@ -6,7 +6,6 @@ setup.py
 dajaxice/__init__.py
 dajaxice/core/__init__.py
 dajaxice/core/DajaxiceRequest.py
-dajaxice/core/decorators.py
 dajaxice/exceptions.py
 dajaxice/management/__init__.py
 dajaxice/management/commands/__init__.py
