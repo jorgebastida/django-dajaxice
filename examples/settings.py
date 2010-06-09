@@ -78,9 +78,10 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'dajaxice',
     'simple',
+    'complex.second',
 )
 
-DAJAXICE_FUNCTIONS = ('simple.ajax.example1','simple.ajax.example2','simple.ajax.example3','simple.ajax.error_example')
+#DAJAXICE_FUNCTIONS = ('simple.ajax.example1','simple.ajax.example2','simple.ajax.example3','simple.ajax.error_example','complex.second.ajax.complex_example1')
                     
 DAJAXICE_MEDIA_PREFIX = "dajaxice"
 DAJAXICE_DEBUG = False

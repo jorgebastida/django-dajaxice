@@ -1,3 +1,14 @@
+dajaxice (0.1.5) stable; urgency=high
+
+	- Now dajaxice functions must be registered using dajaxice_functions.register instead of adding that functions
+	  to DAJAXICE_FUNCTIONS list inside settings.py. This pattern is very similar to django.contrib.admin model registration.
+	- Now dajaxice functions could be placed inside any module depth.
+	- With this approach dajaxice app reusability was improved.
+	- Old style registration (using DAJAXICE_FUNCTIONS) works too, but isn't recommended.
+	- New tests added.
+		
+ -- Benito Jorge Bastida <jorge@thecodefarm.com>  Mon, 7 Jun 2010 23:44:00 +0100
+
 dajaxice (0.1.3) stable; urgency=high
 
 	- CSRF middleware buf fixed

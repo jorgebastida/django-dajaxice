@@ -37,9 +37,9 @@ from django.views.decorators.cache import cache_control
 from dajaxice.core import DajaxiceRequest
 
 
-def dajax_request(request, call):
+def dajaxice_request(request, call):
     """
-    dajax_request
+    dajaxice_request
     Uses DajaxRequest to handle dajax request.
     Return the apropiate json according app_name and method.
     """

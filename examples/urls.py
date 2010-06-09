@@ -5,6 +5,9 @@ import settings
 # from django.contrib import admin
 # admin.autodiscover()
 
+from dajaxice.core import dajaxice_autodiscover
+dajaxice_autodiscover()
+
 urlpatterns = patterns('',
     # Example:
     # (r'^examples/', include('examples.foo.urls')),

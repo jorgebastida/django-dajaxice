@@ -1,13 +1,7 @@
 var Dajaxice = {
-    {% for module,functions in dajaxice_js_functions.items %}
-        {{ module }}: {
-            {% for function in functions %}
-                {{ function }}: function(callback_function,argv){
-                    Dajaxice.call('{{module}}.{{function}}',callback_function,argv);
-	            }{% if not forloop.last %},{% endif %}
-            {% endfor %}
-        },
-    {% endfor %}
+    {% for module in dajaxice_js_functions %}
+        {% include "dajaxice/dajaxice_core_loop.js" %}
+        {% endfor %}{% ifnotequal dajaxice_js_functions|length 0 %},{% endifnotequal %}
     
     call: function(dajaxice_function, dajaxice_callback, argv)
     {
