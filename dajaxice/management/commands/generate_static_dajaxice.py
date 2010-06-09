@@ -50,7 +50,8 @@ class Command(BaseCommand):
         data = {'dajaxice_js_functions':DajaxiceRequest.get_js_functions(),
             'DAJAXICE_URL_PREFIX': DajaxiceRequest.get_media_prefix(),
             'DAJAXICE_XMLHTTPREQUEST_JS_IMPORT':DajaxiceRequest.get_xmlhttprequest_js_import(),
-            'DAJAXICE_JSON2_JS_IMPORT':DajaxiceRequest.get_json2_js_import()
+            'DAJAXICE_JSON2_JS_IMPORT':DajaxiceRequest.get_json2_js_import(),
+            'DAJAXICE_EXCEPTION':DajaxiceRequest.get_exception_message(),
              }
         js = render_to_string('dajaxice/dajaxice.core.js', data )
         if compile_output.lower() == "closure":
