@@ -33,7 +33,6 @@
 
 import os
 import sys
-import sets
 import logging
 import traceback
 
