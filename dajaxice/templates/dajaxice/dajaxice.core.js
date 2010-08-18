@@ -7,7 +7,7 @@ var Dajaxice = {
     {
         var send_data = [];
         send_data.push('callback='+dajaxice_callback);
-        send_data.push('argv='+escape(JSON.stringify(argv)));
+        send_data.push('argv='+encodeURIComponent(JSON.stringify(argv)));
         send_data = send_data.join('&');
         var oXMLHttpRequest = new XMLHttpRequest;
         oXMLHttpRequest.open('POST', '/{{DAJAXICE_URL_PREFIX}}/'+dajaxice_function+'/');

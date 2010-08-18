@@ -45,19 +45,17 @@ from dajaxice.exceptions import FunctionNotCallableError, DajaxiceImportError
 
 log = logging.getLogger('dajaxice.DajaxiceRequest')
 
-# Python 2.7 has an importlib with import_module; for older Pythons,
-# Django's bundled copy provides it.
+# Python 2.7 has an importlib with import_module.
+# For older Pythons, Django's bundled copy provides it.
+# For older Django's dajaxice reduced_import_module.
 try:
     from importlib import import_module
-    DAJAXICE_MODERN_IMPORT = True
 except:
     try:
-        from django.utils import importlib
-        DAJAXICE_MODERN_IMPORT = True
+        from django.utils.importlib import import_module
     except:
-        DAJAXICE_MODERN_IMPORT = False
+        from dajaxice.utils import simple_import_module as import_module
 
-log.info('DAJAXICE_MODERN_IMPORT=%s' % DAJAXICE_MODERN_IMPORT)
 
 def safe_dict(d): 
     """
@@ -133,34 +131,7 @@ class DajaxiceRequest(object):
         Return a callable ajax function.
         This function should be imported according the Django version.
         """
-        if DAJAXICE_MODERN_IMPORT:
-            return self._modern_get_ajax_function()
-        else:
-            return self._old_get_ajax_function()
-    
-    def _old_get_ajax_function(self):
-        """
-        Return a callable ajax function.
-        This function doesn't uses django.utils.importlib
-        """
-        
-        self.module_import_name = "%s.%s" % ( self.project_name, self.module)   
-        try:
-            return self._old_import()
-        except:
-            self.module_import_name = self.module
-            return self._old_import()
-    
-    def _old_import(self):
-        """
-        Import this.module_import_name 
-        This function doesn't uses django.utils.importlib
-        """
-        try:
-            mod = __import__(self.module_import_name , None, None, [self.method])
-            return mod.__getattribute__(self.method)
-        except:
-            raise DajaxiceImportError()
+        return self._modern_get_ajax_function()
         
     def _modern_get_ajax_function(self):
         """
@@ -175,9 +146,8 @@ class DajaxiceRequest(object):
             return self._modern_import()
     
     def _modern_import(self):
-        from django.utils import importlib
         try:
-            mod = importlib.import_module(self.module_import_name)
+            mod = import_module(self.module_import_name)
             return mod.__getattribute__(self.method)
         except:
             raise DajaxiceImportError()

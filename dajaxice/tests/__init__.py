@@ -39,7 +39,6 @@ from django.conf import settings
 
 from dajaxice.exceptions import FunctionNotCallableError, DajaxiceImportError
 from dajaxice.core import DajaxiceRequest
-from dajaxice.core.DajaxiceRequest import DAJAXICE_MODERN_IMPORT
 from dajaxice.core.Dajaxice import Dajaxice, DajaxiceModule
 from dajaxice.core import dajaxice_functions
 
@@ -116,18 +115,9 @@ class DjangoIntegrationTest(TestCase):
         function = dr._modern_get_ajax_function()
         self.failUnless(hasattr(function, '__call__') )
         
-        # Test old Import with a real ajax function
-        dr = DajaxiceRequest(None, 'dajaxice.tests.test_foo')
-        function = dr._old_get_ajax_function()
-        self.failUnless(hasattr(function, '__call__') )
-        
         # Test modern Import without a real ajax function
         dr = DajaxiceRequest(None, 'dajaxice.tests.test_foo2')
         self.failUnlessRaises(DajaxiceImportError, dr._modern_get_ajax_function)
-        
-        # Test old Import without a real ajax function
-        dr = DajaxiceRequest(None, 'dajaxice.tests.test_foo2')
-        self.failUnlessRaises(DajaxiceImportError, dr._old_get_ajax_function)
 
 
 class DajaxiceModuleTest(unittest.TestCase):

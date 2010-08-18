@@ -30,6 +30,7 @@
 #  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
 #  DAMAGE.
 #----------------------------------------------------------------------
+
 def deserialize_form(data):
     """
     Create a new QueryDict from a serialized form.
@@ -37,3 +38,11 @@ def deserialize_form(data):
     from django.http import QueryDict
     data = QueryDict(query_string=unicode(data).encode('utf-8'))
     return data
+
+def simple_import_module(name):
+    """
+    Reduced version of import_module
+    """
+    import sys
+    __import__(name)
+    return sys.modules[name]
