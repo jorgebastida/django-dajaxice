@@ -32,9 +32,12 @@
 #----------------------------------------------------------------------
 
 from django.core.management.base import BaseCommand
-from dajaxice.core import DajaxiceRequest
 from django.template.loader import render_to_string
 from optparse import make_option
+
+from dajaxice.core import DajaxiceRequest
+from dajaxice.core import dajaxice_autodiscover
+dajaxice_autodiscover()
 
 class Command(BaseCommand):
     help = "Generate dajaxice.core.js file to import it as static file"
@@ -51,7 +54,7 @@ class Command(BaseCommand):
             'DAJAXICE_URL_PREFIX': DajaxiceRequest.get_media_prefix(),
             'DAJAXICE_XMLHTTPREQUEST_JS_IMPORT':DajaxiceRequest.get_xmlhttprequest_js_import(),
             'DAJAXICE_JSON2_JS_IMPORT':DajaxiceRequest.get_json2_js_import(),
-            'DAJAXICE_EXCEPTION':DajaxiceRequest.get_exception_message(),
+            'DAJAXICE_EXCEPTION':DajaxiceRequest.get_exception_message()
              }
         js = render_to_string('dajaxice/dajaxice.core.js', data )
         if compile_output.lower() == "closure":
