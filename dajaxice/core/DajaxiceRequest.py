@@ -83,8 +83,7 @@ class DajaxiceRequest(object):
         
     @staticmethod
     def get_js_functions():
-        functions = dajaxice_functions.get_functions()
-        return functions
+        return dajaxice_functions.get_functions()
         
     @staticmethod
     def get_media_prefix():

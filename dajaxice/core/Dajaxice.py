@@ -23,6 +23,9 @@ class DajaxiceFunction(object):
     
     def get_callable_path(self):
         return '%s.%s' % (self.path.replace('.ajax',''), self.name)
+    
+    def __cmp__(self, other):
+        return (self.name == other.name and self.path == other.path)
         
 class DajaxiceModule(object):
     def __init__(self, module):
