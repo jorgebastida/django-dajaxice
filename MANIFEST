@@ -20,6 +20,8 @@ dajaxice/templatetags/dajaxice_templatetags.py
 dajaxice/tests/__init__.py
 dajaxice/tests/ajax.py
 dajaxice/tests/urls.py
+dajaxice/tests/submodules/__init__.py
+dajaxice/tests/submodules/ajax.py
 dajaxice/urls.py
 dajaxice/utils.py
 dajaxice/views.py
