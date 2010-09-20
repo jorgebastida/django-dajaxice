@@ -1,3 +1,11 @@
+dajaxice (0.1.6) stable; urgency=high
+
+	- Fixing registration bugs
+	- Added some tests
+		
+ -- Benito Jorge Bastida <jorge@thecodefarm.com>  Mon, 20 Sep 2010 22:04:00 +0100
+ 
+ 
 dajaxice (0.1.5) stable; urgency=high
 
 	- Now dajaxice functions must be registered using dajaxice_functions.register instead of adding that functions
