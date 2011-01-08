@@ -19,7 +19,7 @@ Inside this file create as many as your want ajax functions.::
 Invoque it from your JS
 ---------------------------
 
-Since ``django-dajaxice>=0.1.6`` callbacks should be **JS functions**. You can invoque your AJAX methods using ``Dajaxice.example.myexample(my_js_callback)``, ``example`` will be the name of the app containing ajax.py
+Since ``django-dajaxice>=0.1.7`` callbacks should be **JS functions**. You can invoque your AJAX methods using ``Dajaxice.example.myexample(my_js_callback)``, ``example`` will be the name of the app containing ajax.py
 
 .. code-block:: javascript
 
@@ -40,7 +40,7 @@ The function ``my_js_callback`` is your JS function that will use your example r
 
 That callback will alert the message ``Hello World``.
 
-Deprecated invoque < 0.1.6
+Deprecated invoque < 0.1.7
 ---------------------------
 
 For backward compatibility, old style string representation is still allowed but it'isnt recomended.

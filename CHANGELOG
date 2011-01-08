@@ -3,8 +3,9 @@ dajaxice (0.1.7) stable; urgency=high
 	- Fixing dajaxice callback model to improve security against XSS attacks.
 	- Dajaxice callbacks should be passed as functions and not as strings.
 	- Old string-callback maintained for backward compatibility.(usage not recommended)
+	- New documentation using Sphinx
 		
- -- Benito Jorge Bastida <jorge@thecodefarm.com>  Sat, 6 Nov 2010 11:30:00 +0100
+ -- Benito Jorge Bastida <jorge@thecodefarm.com>  Sat, 8 Jan 2010 18:00:00 +0100
 
 dajaxice (0.1.6) stable; urgency=high
 
