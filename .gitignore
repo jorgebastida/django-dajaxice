@@ -1,2 +1,4 @@
 *pyc
-
+deploy.sh
+docs/_build
+dist/
