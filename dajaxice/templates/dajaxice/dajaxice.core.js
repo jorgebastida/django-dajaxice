@@ -6,7 +6,13 @@ var Dajaxice = {
     call: function(dajaxice_function, dajaxice_callback, argv)
     {
         var send_data = [];
-        send_data.push('callback='+dajaxice_callback);
+        is_callback_a_function = (typeof(dajaxice_callback) == 'function');
+        
+        if (!is_callback_a_function){
+            /* Backward compatibility for old callback as string usage. */
+            send_data.push('callback='+dajaxice_callback);
+        }
+        
         send_data.push('argv='+encodeURIComponent(JSON.stringify(argv)));
         send_data = send_data.join('&');
         var oXMLHttpRequest = new XMLHttpRequest;
@@ -14,7 +20,18 @@ var Dajaxice = {
         oXMLHttpRequest.setRequestHeader("X-Requested-With", "XMLHttpRequest");
         oXMLHttpRequest.onreadystatechange = function() {
             if (this.readyState == XMLHttpRequest.DONE) {
-                eval(this.responseText);
+                if (is_callback_a_function){
+                    try{
+                        dajaxice_callback(JSON.parse(this.responseText));
+                    }
+                    catch(exception){
+                        dajaxice_callback(this.responseText);
+                    }
+                }
+                else{
+                    /* Backward compatibility for old callback as string usage. */
+                    eval(this.responseText);
+                }
             }
         }
         oXMLHttpRequest.send(send_data);
