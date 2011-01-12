@@ -80,9 +80,7 @@ INSTALLED_APPS = (
     'simple',
     'complex.second',
 )
-
-#DAJAXICE_FUNCTIONS = ('simple.ajax.example1','simple.ajax.example2','simple.ajax.example3','simple.ajax.error_example','complex.second.ajax.complex_example1')
-                    
+                   
 DAJAXICE_MEDIA_PREFIX = "dajaxice"
 DAJAXICE_DEBUG = False
 #DAJAXICE_NOTIFY_EXCEPTIONS = True
