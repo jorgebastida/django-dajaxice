@@ -3,21 +3,24 @@ Class Reference
 
 DajaxiceRequest
 ---------------------
-.. autoclass:: dajaxice.core.DajaxiceRequest
-    :members:
-
-DajaxiceFunction
----------------------
-.. autoclass:: dajaxice.core.Dajaxice.DajaxiceFunction
-    :members:
-
-DajaxiceModule
----------------------
-    
-.. autoclass:: dajaxice.core.Dajaxice.DajaxiceModule
-    :members:
+.. automodule:: dajaxice.core.DajaxiceRequest
+    :members: DajaxiceRequest
+    :undoc-members:
 
 Dajaxice
 ---------------------
-.. autoclass:: dajaxice.core.Dajaxice.Dajaxice
-    :members:
+.. automodule:: dajaxice.core.Dajaxice
+    :members: Dajaxice
+    :undoc-members:
+
+DajaxiceModule
+---------------------
+.. automodule:: dajaxice.core.Dajaxice
+    :members: DajaxiceModule
+    :undoc-members:
+    
+DajaxiceFunction
+---------------------
+.. automodule:: dajaxice.core.Dajaxice
+    :members: DajaxiceFunction
+    :undoc-members:

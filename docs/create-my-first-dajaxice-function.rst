@@ -3,7 +3,7 @@ Creating my first dajaxice function
 
 Create your ajax function
 ------------------------------
-Create a file named ``ajax.py`` inside any django app. For example ``example/models.py``.
+Create a file named ``ajax.py`` inside any django app. For example ``example/ajax.py``.
 
 Inside this file create as many as your want ajax functions.::
 
