@@ -3,6 +3,7 @@ dajaxice (0.1.8) stable; urgency=normal
 	- Add build dir to ignores
 	- Remove MANIFEST file and auto-generate it through MANIFEST.in
 	- Add MANIFEST to ignores
+	- Include examples and docs dirs to source distribution
 		
  -- Angel Abad <angelabad@gmail.com>  Mon, 17 Jan 2010 11:00:00 +0100
 
