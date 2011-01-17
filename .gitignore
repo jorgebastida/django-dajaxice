@@ -2,3 +2,4 @@
 deploy.sh
 docs/_build
 dist/
+build/
