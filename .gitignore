@@ -1,5 +1,6 @@
 *pyc
 deploy.sh
+MANIFEST
 docs/_build
 dist/
 build/
