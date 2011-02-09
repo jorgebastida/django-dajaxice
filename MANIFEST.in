@@ -6,3 +6,4 @@ include MANIFEST.in
 recursive-include dajaxice *
 recursive-include examples *
 recursive-include docs *
+recursive-exclude *.pyc
