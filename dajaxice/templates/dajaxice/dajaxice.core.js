@@ -3,6 +3,23 @@ var Dajaxice = {
         {% include "dajaxice/dajaxice_core_loop.js" %}
         {% endfor %}{% ifnotequal dajaxice_js_functions|length 0 %},{% endifnotequal %}
     
+    get_cookie: function(name)
+    {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].toString().replace(/^\s+/, "").replace(/\s+$/, "");
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    },
+                
     call: function(dajaxice_function, dajaxice_callback, argv)
     {
         var send_data = [];
@@ -18,6 +35,7 @@ var Dajaxice = {
         var oXMLHttpRequest = new XMLHttpRequest;
         oXMLHttpRequest.open('POST', '/{{DAJAXICE_URL_PREFIX}}/'+dajaxice_function+'/');
         oXMLHttpRequest.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+        oXMLHttpRequest.setRequestHeader("X-CSRFToken",this.get_cookie('csrftoken'));
         oXMLHttpRequest.onreadystatechange = function() {
             if (this.readyState == XMLHttpRequest.DONE) {
                 if (is_callback_a_function){
