@@ -5,6 +5,7 @@ dajaxice (0.1.8) stable; urgency=normal
 	- Add MANIFEST to ignores
 	- Include examples and docs dirs to source distribution
 	- Add long_description to setup.py
+	- Fixed Flaw in AJAX CSRF handling (X-CSRFToken Django 1.2.5)
 		
  -- Angel Abad <angelabad@gmail.com>  Mon, 17 Jan 2010 11:00:00 +0100
 
