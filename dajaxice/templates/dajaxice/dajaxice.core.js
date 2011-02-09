@@ -19,7 +19,7 @@ var Dajaxice = {
         }
         return cookieValue;
     },
-                
+            
     call: function(dajaxice_function, dajaxice_callback, argv)
     {
         var send_data = [];
