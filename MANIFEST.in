@@ -4,6 +4,7 @@ include COPYING
 include INSTALL
 include MANIFEST.in
 recursive-include dajaxice *
+recursive-exclude dajaxice *.pyc
 recursive-include examples *
+recursive-exclude examples *.pyc
 recursive-include docs *
-recursive-exclude *.pyc
