@@ -1,7 +1,7 @@
 {{ module.name }}: {
     {% for function in module.functions %}
-            {{ function.name }}: function(callback_function, argv){
-                Dajaxice.call('{{function.get_callable_path}}', callback_function, argv);
+            {{ function.name }}: function(callback_function, argv, exception_callback){
+                Dajaxice.call('{{function.get_callable_path}}', callback_function, argv, exception_callback);
             }{% if not forloop.last %},{% endif %}
     {% endfor %}
             

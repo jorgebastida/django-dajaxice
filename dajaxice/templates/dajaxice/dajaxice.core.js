@@ -20,14 +20,16 @@ var Dajaxice = {
         return cookieValue;
     },
             
-    call: function(dajaxice_function, dajaxice_callback, argv)
+    call: function(dajaxice_function, dajaxice_callback, argv, exception_callback)
     {
         var send_data = [];
         is_callback_a_function = (typeof(dajaxice_callback) == 'function');
+        if(!is_callback_a_function){
+            alert("dajaxice_callback should be a function since dajaxice 0.2")
+        }
         
-        if (!is_callback_a_function){
-            /* Backward compatibility for old callback as string usage. */
-            send_data.push('callback='+dajaxice_callback);
+        if(exception_callback==undefined || typeof(dajaxice_callback) != 'function'){
+            exception_callback = this.get_setting('default_exception_callback');
         }
         
         send_data.push('argv='+encodeURIComponent(JSON.stringify(argv)));
@@ -38,7 +40,10 @@ var Dajaxice = {
         oXMLHttpRequest.setRequestHeader("X-CSRFToken",this.get_cookie('csrftoken'));
         oXMLHttpRequest.onreadystatechange = function() {
             if (this.readyState == XMLHttpRequest.DONE) {
-                if (is_callback_a_function){
+                if(this.responseText == Dajaxice.EXCEPTION){
+                    exception_callback();
+                }
+                else{
                     try{
                         dajaxice_callback(JSON.parse(this.responseText));
                     }
@@ -46,16 +51,31 @@ var Dajaxice = {
                         dajaxice_callback(this.responseText);
                     }
                 }
-                else{
-                    /* Backward compatibility for old callback as string usage. */
-                    eval(this.responseText);
-                }
             }
         }
         oXMLHttpRequest.send(send_data);
+    },
+    
+    setup: function(settings)
+    {
+        this.settings = settings;
+    },
+    
+    get_setting: function(key){
+        if(this.settings == undefined || this.settings[key] == undefined){
+            return this.default_settings[key];
+        }
+        return this.settings[key];
+    },
+    
+    default_exception_callback: function(data){
+        alert('Something goes wrong');
     }
 };
-Dajaxice.EXCEPTION = {{ DAJAXICE_EXCEPTION|safe }};
+
+Dajaxice.EXCEPTION = '{{ DAJAXICE_EXCEPTION }}';
+Dajaxice.default_settings = {'default_exception_callback': Dajaxice.default_exception_callback}
+
 window['Dajaxice'] = Dajaxice;
 
 {% comment %}

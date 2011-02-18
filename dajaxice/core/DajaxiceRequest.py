@@ -117,7 +117,7 @@ class DajaxiceRequest(object):
     
     @staticmethod
     def get_exception_message():
-        return simplejson.dumps(getattr(settings, 'DAJAXICE_EXCEPTION', u"DAJAXICE_EXCEPTION" ))
+        return getattr(settings, 'DAJAXICE_EXCEPTION', u'DAJAXICE_EXCEPTION' )
         
     def _is_callable(self):
         """
@@ -157,7 +157,6 @@ class DajaxiceRequest(object):
         """
         if self._is_callable():
             log.debug('Function %s is callable' % self.full_name)
-            callback = self.request.POST.get('callback', None)
             
             argv = self.request.POST.get('argv')
             if argv != 'undefined':
@@ -170,26 +169,16 @@ class DajaxiceRequest(object):
             else:
                 argv = {}
                 
-            log.debug('callback %s' % callback)
             log.debug('argv %s' % argv)
             
             try:
                 thefunction = self._get_ajax_function()
-                if callback:
-                    response = '%s(%s)' % ( callback, thefunction(self.request, **argv) )
-                else:
-                    response = '%s' % thefunction(self.request, **argv)
+                response = '%s' % thefunction(self.request, **argv)
                     
             except Exception, e:
                 trace = '\n'.join(traceback.format_exception(*sys.exc_info()))
                 log.error(trace)
-                if DajaxiceRequest.get_debug():
-                    response = 'alert("%s")' % trace.replace('"','\\"').replace('\n','\\n')
-                else:
-                    if callback:
-                        response = '%s(%s)' % ( callback, DajaxiceRequest.get_exception_message())
-                    else:
-                        response = '%s' % DajaxiceRequest.get_exception_message()
+                response = '%s' % DajaxiceRequest.get_exception_message()
                     
                 if DajaxiceRequest.get_notify_exceptions():
                     self.notify_exception(self.request, sys.exc_info())
