@@ -18,11 +18,11 @@ Add `dajaxice` in your project settings.py inside **INSTALLED_APPS**::
 
 Ensure that **TEMPLATE_LOADERS**, looks like the following. Probably you need to uncomment the last line.::
 
-	TEMPLATE_LOADERS = (
-	    'django.template.loaders.filesystem.Loader',
-	    'django.template.loaders.app_directories.Loader',
-	    'django.template.loaders.eggs.Loader',
-	)
+    TEMPLATE_LOADERS = (
+        'django.template.loaders.filesystem.Loader',
+        'django.template.loaders.app_directories.Loader',
+        'django.template.loaders.eggs.Loader',
+    )
 
 Add **DAJAXICE_MEDIA_PREFIX** in your settings.py::
 
