@@ -23,7 +23,7 @@ var Dajaxice = {
     call: function(dajaxice_function, dajaxice_callback, argv, exception_callback)
     {
         var send_data = [];
-        is_callback_a_function = (typeof(dajaxice_callback) == 'function');
+        var is_callback_a_function = (typeof(dajaxice_callback) == 'function');
         if(!is_callback_a_function){
             alert("dajaxice_callback should be a function since dajaxice 0.2")
         }
