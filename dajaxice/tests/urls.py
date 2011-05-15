@@ -35,8 +35,10 @@ from django.conf.urls.defaults import *
 from django.conf import settings
 from dajaxice.core import dajaxice_autodiscover
 
+
 dajaxice_autodiscover()
-urlpatterns = patterns('',  
+
+urlpatterns = patterns('',
     #Dajaxice URLS
     (r'^%s/' % settings.DAJAXICE_MEDIA_PREFIX, include('dajaxice.urls')),
 )

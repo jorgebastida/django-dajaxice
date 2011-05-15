@@ -33,7 +33,7 @@
 
 from django.conf.urls.defaults import *
 
+
 urlpatterns = patterns('',
-                        url(r'^dajaxice.core.js$','dajaxice.views.js_core'),
-                        url(r'^(.*)/$','dajaxice.views.dajaxice_request'),
-                        )
+                        url(r'^dajaxice.core.js$', 'dajaxice.views.js_core'),
+                        url(r'^(.*)/$', 'dajaxice.views.dajaxice_request'),)

@@ -36,6 +36,7 @@ from dajaxice.core import DajaxiceRequest
 
 register = template.Library()
 
-@register.inclusion_tag('dajaxice/dajaxice_js_import.html',takes_context=True)
+
+@register.inclusion_tag('dajaxice/dajaxice_js_import.html', takes_context=True)
 def dajaxice_js_import(context):
-    return { 'DAJAXICE_MEDIA_PREFIX': DajaxiceRequest.get_media_prefix() }
+    return {'DAJAXICE_MEDIA_PREFIX': DajaxiceRequest.get_media_prefix()}

@@ -34,22 +34,27 @@
 from django.utils import simplejson
 from dajaxice.core import dajaxice_functions
 
+
 def test_registered_function(request):
     return ""
 dajaxice_functions.register(test_registered_function)
 
+
 def test_string(request):
-    return simplejson.dumps({'string':'hello world'})
+    return simplejson.dumps({'string': 'hello world'})
 dajaxice_functions.register(test_string)
+
 
 def test_ajax_exception(request):
     raise Exception()
     return
 dajaxice_functions.register(test_ajax_exception)
 
+
 def test_foo(request):
     return ""
 dajaxice_functions.register(test_foo)
+
 
 def test_foo_with_params(request, param1):
     return simplejson.dumps(param1)

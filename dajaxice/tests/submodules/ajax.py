@@ -31,8 +31,9 @@
 #  DAMAGE.
 #----------------------------------------------------------------------
 
-from django.utils import simplejson
+
 from dajaxice.core import dajaxice_functions
+
 
 def test_submodule_registered_function(request):
     return ""
