@@ -118,7 +118,11 @@ class DajaxiceRequest(object):
     @staticmethod
     def get_exception_message():
         return getattr(settings, 'DAJAXICE_EXCEPTION', u'DAJAXICE_EXCEPTION' )
-        
+
+    @staticmethod
+    def get_js_docstrings():
+        return getattr(settings, 'DAJAXICE_JS_DOCSTRINGS', False)
+
     def _is_callable(self):
         """
         Return if the request function was registered.

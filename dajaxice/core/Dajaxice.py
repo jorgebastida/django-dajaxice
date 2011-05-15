@@ -17,9 +17,10 @@ log = logging.getLogger('dajaxice.DajaxiceRequest')
 
 class DajaxiceFunction(object):
     
-    def __init__(self, name, path):
+    def __init__(self, name, path, doc=None):
         self.name = name
         self.path = path
+        self.doc = doc
     
     def get_callable_path(self):
         return '%s.%s' % (self.path.replace('.ajax',''), self.name)
@@ -88,14 +89,14 @@ class Dajaxice(object):
             self.register_function(function[0],function[1])
         
     def register(self, function):
-        self.register_function(function.__module__, function.__name__)
+        self.register_function(function.__module__, function.__name__, function.__doc__)
     
-    def register_function(self, module, name):
+    def register_function(self, module, name, doc=None):
         """
         Register function at 'module' depth
         """
         #Create the dajaxice function.
-        function = DajaxiceFunction(name=name, path=module)
+        function = DajaxiceFunction(name=name, path=module, doc=doc)
         
         #Check for already registered functions.
         full_path = '%s.%s' % (module, name)

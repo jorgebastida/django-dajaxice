@@ -82,9 +82,10 @@ INSTALLED_APPS = (
     'simple',
     'complex.second',
 )
-                   
+
 DAJAXICE_MEDIA_PREFIX = "dajaxice"
 DAJAXICE_DEBUG = False
+DAJAXICE_JS_DOCSTRINGS = True
 #DAJAXICE_NOTIFY_EXCEPTIONS = True
 
 import logging

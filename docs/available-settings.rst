@@ -63,6 +63,16 @@ Default data sent when an exception occurs.
 
 Defaults to ``"DAJAXICE_EXCEPTION"``
 
+DAJAXICE_JS_DOCSTRINGS
+------------------------
+
+**Optional**
+
+If True, Dajaxice will add your ajax functions docstrings as a comment before the js functions in dajaxice.core.js
+
+Defaults to ``False``
+
+
 DAJAXICE_FUNCTIONS
 -----------------------------------
 

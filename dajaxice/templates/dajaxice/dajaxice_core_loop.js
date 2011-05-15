@@ -1,5 +1,6 @@
 {{ module.name }}: {
     {% for function in module.functions %}
+            {% if function.doc and DAJAXICE_JS_DOCSTRINGS %}/* {{ function.doc|default:'' }}*/ {% endif %}
             {{ function.name }}: function(callback_function, argv, exception_callback){
                 Dajaxice.call('{{function.get_callable_path}}', callback_function, argv, exception_callback);
             }{% if not forloop.last %},{% endif %}

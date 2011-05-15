@@ -54,6 +54,7 @@ def js_core(request):
             'DAJAXICE_URL_PREFIX': DajaxiceRequest.get_media_prefix(),
             'DAJAXICE_XMLHTTPREQUEST_JS_IMPORT':DajaxiceRequest.get_xmlhttprequest_js_import(),
             'DAJAXICE_JSON2_JS_IMPORT':DajaxiceRequest.get_json2_js_import(),
-            'DAJAXICE_EXCEPTION':DajaxiceRequest.get_exception_message()
+            'DAJAXICE_EXCEPTION':DajaxiceRequest.get_exception_message(),
+            'DAJAXICE_JS_DOCSTRINGS': DajaxiceRequest.get_js_docstrings()
              }
     return render_to_response('dajaxice/dajaxice.core.js', data, mimetype="text/javascript" )
