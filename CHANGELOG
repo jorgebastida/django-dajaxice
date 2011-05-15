@@ -1,3 +1,13 @@
+dajaxice (0.2) stable; urgency=normal
+
+	- Dajaxice now propagate docstrings to javascript dajaxice functions.
+	- Added DAJAXICE_JS_DOCSTRINGS to configure docstrings propagation behaviour, default=False.
+	- Documentation Updated.
+	- Fix race condition with the 'is_callback_a_function' variable in dajaxice.core.js
+	- Updated installation guide for compatibility with django 1.3
+		
+ -- Benito Jorge Bastida <me@jorgebastida.com>  Sun, 25 May 2010 10:58:00 +0000
+
 dajaxice (0.1.8.1) stable; urgency=high
 
 	- Fixed bug #25 related to CSRF verification on Django 1.2.5
