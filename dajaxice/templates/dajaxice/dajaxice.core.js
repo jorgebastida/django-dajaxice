@@ -20,16 +20,22 @@ var Dajaxice = {
         return cookieValue;
     },
             
-    call: function(dajaxice_function, dajaxice_callback, argv, exception_callback)
+    call: function(dajaxice_function, dajaxice_callback, argv, custom_settings)
     {
         var send_data = [];
         var is_callback_a_function = (typeof(dajaxice_callback) == 'function');
+        
         if(!is_callback_a_function){
             alert("dajaxice_callback should be a function since dajaxice 0.2")
         }
         
-        if(exception_callback==undefined || typeof(dajaxice_callback) != 'function'){
-            exception_callback = this.get_setting('default_exception_callback');
+        if(custom_settings == undefined){
+            custom_settings = {};
+        }
+        
+        var error_callback = this.get_setting('default_exception_callback');
+        if('error_callback' in custom_settings && typeof(custom_settings['error_callback']) == 'function'){
+            error_callback = custom_settings['error_callback'];
         }
         
         send_data.push('argv='+encodeURIComponent(JSON.stringify(argv)));
@@ -41,7 +47,7 @@ var Dajaxice = {
         oXMLHttpRequest.onreadystatechange = function() {
             if (this.readyState == XMLHttpRequest.DONE) {
                 if(this.responseText == Dajaxice.EXCEPTION){
-                    exception_callback();
+                    error_callback();
                 }
                 else{
                     try{

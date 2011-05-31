@@ -8,69 +8,46 @@
 	<script type="text/javascript" charset="utf-8">
 	
 		function callback_example1(data){
-			if(data!=Dajaxice.EXCEPTION){
-				alert(data.message);
-			}
-			else{
-				alert('Error');
-			}
+			alert(data.message);
 		}
+		
 		function callback_example2(data){
-			if(data!=Dajaxice.EXCEPTION){
-				for (var i=0; i < data.numbers.length; i++) {
-					alert(data.numbers[i]);
-				}
-			}
-			else{
-				alert('Error');
+			for (var i=0; i < data.numbers.length; i++) {
+				alert(data.numbers[i]);
 			}
 		}
 		
 		function callback_example3(data){
-			if(data!=Dajaxice.EXCEPTION){
-				alert(data.result);
-			}
-			else{
-				alert('Error');
-			}
+			alert(data.result);
 		}
 		
 		function callback_example_error(data){
-		    if(data!=Dajaxice.EXCEPTION){
-				alert(data);
-			}
-			else{
-				alert('Error');
-			}
+			alert(data);
 		}
 		
 		function callback_complex_example1(data){
-		    if(data!=Dajaxice.EXCEPTION){
-				alert(data.message);
-			}
-			else{
-				alert('Error');
-			}
+		    alert(data.message);
+		}
+		
+		function custom_error(){
+			alert('Custom error');
 		}
 	
 	</script>
 </head>
 <body>
 <h2>dajaxice examples</h2>
-<h3>old string callback</h3>
-<input type="button" name="some_name" value="Call Example 1! (String)" onclick="Dajaxice.simple.example1('callback_example1');" id="some_name" /><br/>
-<input type="button" name="some_name" value="Call Example 2! (Number list)" onclick="Dajaxice.simple.example2('callback_example2');" id="some_name" /><br/>
-<input type="button" name="some_name" value="Call Example 3! (Sending Array)" onclick="Dajaxice.simple.example3('callback_example3', {'data':[1,2,3],'name':'Peter'});" id="some_name"/><br/>
-<input type="button" name="some_name" value="Raise Exception" onclick="Dajaxice.simple.error_example('callback_example_error');" id="some_name" /><br/>
-<input type="button" name="some_name" value="Complex Example" onclick="Dajaxice.complex.second.complex_example1('callback_complex_example1');" id="some_name" />
 
 <h3>new function callback</h3>
-<input type="button" name="some_name" value="Call Example 1! (String)" onclick="Dajaxice.simple.example1(callback_example1);" id="some_name" /><br/>
-<input type="button" name="some_name" value="Call Example 2! (Number list)" onclick="Dajaxice.simple.example2(callback_example2);" id="some_name" /><br/>
-<input type="button" name="some_name" value="Call Example 3! (Sending Array)" onclick="Dajaxice.simple.example3(callback_example3, {'data':[1,2,3],'name':'Peter'});" id="some_name"/><br/>
-<input type="button" name="some_name" value="Raise Exception" onclick="Dajaxice.simple.error_example(callback_example_error);" id="some_name" /><br/>
-<input type="button" name="some_name" value="Raise Exception with custom exception callback" onclick="Dajaxice.simple.error_example(callback_example_error,{},function(){alert('custom error')});" id="some_name" /><br/>
-<input type="button" name="some_name" value="Complex Example" onclick="Dajaxice.complex.second.complex_example1(callback_complex_example1);" id="some_name" />
+<input type="button" value="Call Example 1! (String)" onclick="Dajaxice.simple.example1(callback_example1);" /><br/>
+<input type="button" value="Call Example 2! (Number list)" onclick="Dajaxice.simple.example2(callback_example2);" /><br/>
+<input type="button" value="Call Example 3! (Sending Array)" onclick="Dajaxice.simple.example3(callback_example3, {'data':[1,2,3],'name':'Peter'});" /><br/>
+<input type="button" value="Raise Exception" onclick="Dajaxice.simple.error_example(callback_example_error);" /><br/>
+<input type="button" value="Raise Exception with custom exception callback" onclick="Dajaxice.simple.error_example(callback_example_error, {},{'error_callback': custom_error});" /><br/>
+<input type="button" value="Complex Example" onclick="Dajaxice.complex.second.complex_example1(callback_complex_example1);" />
+
+<h3>old string callback</h3>
+<input type="button" name="some_name" value="Call Example 1! (String)" onclick="Dajaxice.simple.example1('callback_example1');"
 
 </body>
 </html>
