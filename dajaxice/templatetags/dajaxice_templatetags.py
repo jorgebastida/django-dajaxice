@@ -31,12 +31,32 @@
 #  DAMAGE.
 #----------------------------------------------------------------------
 
+import logging
+
 from django import template
+from django.conf import settings
+
 from dajaxice.core import DajaxiceRequest
+from django.middleware.csrf import get_token
 
 register = template.Library()
 
+log = logging.getLogger('dajaxice')
+
 
 @register.inclusion_tag('dajaxice/dajaxice_js_import.html', takes_context=True)
-def dajaxice_js_import(context):
-    return {'DAJAXICE_MEDIA_PREFIX': DajaxiceRequest.get_media_prefix()}
+def dajaxice_js_import(context, core_url=None):
+    # We must force this request to add the csrftoken cookie.
+    request = context.get('request', None)
+    if request:
+        get_token(request)
+    else:
+        log.warning("The 'request' object must be accesible within the context. \
+                     You must add 'django.contrib.messages.context_processors.request' \
+                     to your TEMPLATE_CONTEXT_PROCESSORS and render your views\
+                     using a RequestContext.")
+    if not core_url or DajaxiceRequest.get_debug():
+        core_url = '/%s/dajaxice.core.js' % DajaxiceRequest.get_media_prefix()
+    else:
+        core_url = '%s%s' % (settings.STATIC_URL or '', core_url,)
+    return {'core_url': core_url}

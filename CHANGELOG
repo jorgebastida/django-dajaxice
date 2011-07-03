@@ -1,5 +1,7 @@
 dajaxice (0.2) stable; urgency=normal
 	- Fix bug with the 'is_callback_a_function' variable in dajaxice.core.js
+	- Fix bug with csrftoken in landing pages using dajaxice.
+	- Improve reliability handling server errors.
 	- Exception handling was fully rewritten. Dajaxice default_error_callback is now configurable using Dajaxice.setup.
 	- Custom error messages per dajaxice call.
 	- Dajaxice now propagate docstrings to javascript dajaxice functions.

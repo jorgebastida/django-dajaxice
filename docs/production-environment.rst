@@ -1,12 +1,25 @@
 Dajaxice in production environment
 ===========================================
 
-Dajaxice generates dynamically it's JS core in every request using::
+Dajaxice generates dynamically its JS core in every request using::
 
     {% load dajaxice_templatetags %}
     {% dajaxice_js_import %}
 
-This is a good feature when you run your project inside your development machine, but when you need performance in your production environment this file could be generated and served statically.
+This is a good feature when you run your project in your development machine, but when you need performance in your production environment this file should be generated and served statically.
+
+.. note::
+    New in **dango-dajaxice 0.2**
+
+``dajaxice_js_import`` templatetag can also handle ``dajaxice.core.js`` statically generated files.
+You can add as first argument the path where the static file will reside inside your ``STATIC_ROOT`` and the template tag
+will include this file if your ``DAJAXICE_DEBUG`` is ``False``. If not or if this argument isn't present it will include
+the dynamically generated file::
+
+    {% dajaxice_js_import "js/dajaxice.core.js"%}
+
+This decorator also ensures that django sets the ``csrftoken`` into the response when we use dajaxice in the templates.
+
 
 Generating Uncompiled version
 -------------------------------

@@ -6,33 +6,33 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	{% dajaxice_js_import %}
 	<script type="text/javascript" charset="utf-8">
-	
+
 		function callback_example1(data){
 			alert(data.message);
 		}
-		
+
 		function callback_example2(data){
 			for (var i=0; i < data.numbers.length; i++) {
 				alert(data.numbers[i]);
 			}
 		}
-		
+
 		function callback_example3(data){
 			alert(data.result);
 		}
-		
+
 		function callback_example_error(data){
 			alert(data);
 		}
-		
+
 		function callback_complex_example1(data){
 		    alert(data.message);
 		}
-		
+
 		function custom_error(){
 			alert('Custom error');
 		}
-	
+
 	</script>
 </head>
 <body>

@@ -36,6 +36,7 @@ If you’re new to dajaxice, you may want to start with these documents:
    custom-error-callbacks
    production-environment
    migrating-to-02
+   csrftoken-issues
    available-settings
    modules.rst
 
@@ -59,6 +60,6 @@ Requirements
 Dajaxice doesn't require any special package to start working.
 
 * Python>=2.4
-* Django>=1.1
+* Django>=1.1.4
 
 

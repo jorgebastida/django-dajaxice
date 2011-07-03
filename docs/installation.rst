@@ -5,18 +5,18 @@ Follow this instructions to start using dajaxice in your django project.
 Installing dajaxice
 --------------------------
 
-Add `dajaxice` in your project settings.py inside **INSTALLED_APPS**::
+Add `dajaxice` in your project settings.py inside ``INSTALLED_APPS``::
 
-	INSTALLED_APPS = (
+    INSTALLED_APPS = (
             'django.contrib.auth',
             'django.contrib.contenttypes',
             'django.contrib.sessions',
             'django.contrib.sites',
             'dajaxice',
             ...
-	)
+    )
 
-Ensure that **TEMPLATE_LOADERS**, looks like the following. Probably you need to uncomment the last line.::
+Ensure that ``TEMPLATE_LOADERS``, looks like the following. Probably you need to uncomment the last line.::
 
     TEMPLATE_LOADERS = (
         'django.template.loaders.filesystem.Loader',
@@ -24,13 +24,23 @@ Ensure that **TEMPLATE_LOADERS**, looks like the following. Probably you need to
         'django.template.loaders.eggs.Loader',
     )
 
-Add **DAJAXICE_MEDIA_PREFIX** in your settings.py::
+Ensure that ``TEMPLATE_CONTEXT_PROCESSORS`` has ``django.core.context_processors.request``.::
+
+    TEMPLATE_CONTEXT_PROCESSORS = ("django.contrib.auth.context_processors.auth",
+                                   "django.core.context_processors.debug",
+                                   "django.core.context_processors.i18n",
+                                   "django.core.context_processors.media",
+                                   "django.core.context_processors.static",
+                                   "django.core.context_processors.request",
+                                   "django.contrib.messages.context_processors.messages")
+
+Add ``DAJAXICE_MEDIA_PREFIX`` to your settings.py::
 
 	DAJAXICE_MEDIA_PREFIX="dajaxice"
 
 Configure dajaxice url
 ------------------------
-	
+
 Add the following code inside urls.py::
 
 	from dajaxice.core import dajaxice_autodiscover
@@ -51,7 +61,7 @@ Dajaxice needs to include some js in your template, you should load ``dajaxice_t
 .. code-block:: html
 
 	{% load dajaxice_templatetags %}
-	
+
 	<html>
 	  <head>
 	    <title>My base template</title>
@@ -60,8 +70,8 @@ Dajaxice needs to include some js in your template, you should load ``dajaxice_t
 	  </head>
         ...
 	</html>
-	...
-	
+
+
 This templatetag include dynamic dajaxice core. It's a good idea in production environment serving this file statically.
 Check :doc:`production-environment` for more production-performance help.
 

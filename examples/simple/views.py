@@ -1,5 +1,5 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 
 
 def simple_index(request):
-    return render_to_response('simple/simple_index.html')
+    return render(request, 'simple/simple_index.html')

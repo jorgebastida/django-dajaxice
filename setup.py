@@ -2,11 +2,11 @@ from distutils.core import setup
 
 setup(
     name = "django-dajaxice",
-    version = "0.1.8.1",
+    version = "0.2",
     author = "Benito Jorge Bastida Perez",
     author_email = "jorge@thecodefarm.com",
     description = "Agnostic and easy to use ajax library for django",
-    download_url = "http://cloud.github.com/downloads/jorgebastida/django-dajaxice/django-dajaxice-0.1.8.1.tar.gz",
+    download_url = "http://cloud.github.com/downloads/jorgebastida/django-dajaxice/django-dajaxice-0.2.tar.gz",
     url = "http://dajaxproject.com",
     packages= ['dajaxice', 'dajaxice.templatetags', 'dajaxice.core', 'dajaxice.management', 'dajaxice.management.commands'],
     package_data = {'dajaxice': ['templates/dajaxice/*']},
