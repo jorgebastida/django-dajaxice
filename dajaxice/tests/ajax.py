@@ -52,10 +52,10 @@ dajaxice_functions.register(test_ajax_exception)
 
 
 def test_foo(request):
-    return ""
+    return simplejson.dumps({'foo': 'bar'})
 dajaxice_functions.register(test_foo)
 
 
 def test_foo_with_params(request, param1):
-    return simplejson.dumps(param1)
+    return simplejson.dumps({'param1': param1})
 dajaxice_functions.register(test_foo_with_params)

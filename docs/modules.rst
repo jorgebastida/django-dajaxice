@@ -18,7 +18,7 @@ DajaxiceModule
 .. automodule:: dajaxice.core.Dajaxice
     :members: DajaxiceModule
     :undoc-members:
-    
+
 DajaxiceFunction
 ---------------------
 .. automodule:: dajaxice.core.Dajaxice

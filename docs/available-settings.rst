@@ -76,12 +76,14 @@ Defaults to ``False``
 DAJAXICE_FUNCTIONS
 -----------------------------------
 
-**DEPRECATED since 0.1.5**
+.. note::
+
+    Deprecated since **django-dajaxice 0.1.5**
 
 This option contains a list of all functions callable via ajax.
 
 **Since 0.1.5 dajaxice functions should be registered using.**::
-    
+
     dajaxice_functions.register(function)
 
 Defaults to ``()``

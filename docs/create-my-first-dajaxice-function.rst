@@ -12,46 +12,52 @@ Inside this file create as many as your want ajax functions.::
 
 	def myexample(request):
             return simplejson.dumps({'message':'Hello World'})
-	
+
 	dajaxice_functions.register(myexample)
 
+You can also register the dajaxice function using the ``dajaxice_register`` decorator.::
+
+	from django.utils import simplejson
+	from dajaxice.decorators import dajaxice_register
+
+	@dajaxice_register
+	def myexample(request):
+            return simplejson.dumps({'message':'Hello World'})
 
 Invoque it from your JS
 ---------------------------
 
-Since ``django-dajaxice>=0.1.7`` callbacks should be **JS functions**. You can invoque your AJAX methods using ``Dajaxice.example.myexample(my_js_callback)``, ``example`` will be the name of the app containing ajax.py
+.. note::
+
+	Since **django-dajaxice 0.2** callbacks must be JS functions and not strings.
+
+You can invoque your ajax fuctions from javascript using:
 
 .. code-block:: javascript
 
 	onclick="Dajaxice.example.myexample(my_js_callback);"
 
-The function ``my_js_callback`` is your JS function that will use your example return data. For example:
+The function ``my_js_callback`` is your JS function that will use your example return data. For example alert the message:
 
 .. code-block:: javascript
 
 	function my_js_callback(data){
-	  if(data==Dajaxice.EXCEPTION){
-	    alert('Error! Something happens!');
-	  }
-	  else{
 	    alert(data.message);
-	  }
 	}
 
 That callback will alert the message ``Hello World``.
 
-Deprecated invoque < 0.1.7
+Strings as callbacks
 ---------------------------
 
-For backward compatibility, old style string representation is still allowed but it'isnt recomended.
+.. note::
 
-Javascript call using string notation:
+	String callbacks are deprecated since **django-dajaxice 0.2**
 
 .. code-block:: javascript
 
 	onclick="Dajaxice.example.myexample('my_js_callback');"
 
-The function ``my_js_callback`` is your JS function that will use your example return data. For example:
 
 .. code-block:: javascript
 
@@ -63,5 +69,3 @@ The function ``my_js_callback`` is your JS function that will use your example r
 	    alert(data.message);
 	  }
 	}
-
-That callback will alert the message ``Hello World``.

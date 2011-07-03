@@ -16,7 +16,7 @@ Dajaxice has the following aims:
 * Presentation logic outside the views (No presentation code inside ajax functions).
 * Lightweight.
 * Crossbrowsing ready.
-* `Unobtrusive standard-compliant (W3C) XMLHttpRequest 1.0 <http://code.google.com/p/xmlhttprequest/>`_ object usage. 
+* `Unobtrusive standard-compliant (W3C) XMLHttpRequest 1.0 <http://code.google.com/p/xmlhttprequest/>`_ object usage.
 
 Why should I use dajaxice?
 --------------------------
@@ -33,8 +33,10 @@ If you’re new to dajaxice, you may want to start with these documents:
 
    installation
    create-my-first-dajaxice-function
-   available-settings
+   custom-error-callbacks
    production-environment
+   migrating-to-02
+   available-settings
    modules.rst
 
 How does it works
@@ -42,8 +44,9 @@ How does it works
 .. image:: overview.png
    :scale: 50 %
    :alt: django-dajaxice overview
-   :align: left
-   
+   :align: center
+
+
 Indices and tables
 ==================
 

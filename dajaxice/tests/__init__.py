@@ -60,20 +60,20 @@ class DjangoIntegrationTest(TestCase):
         response = self.client.post('/dajaxice/dajaxice.tests.test_foo/', {'callback': 'my_callback'})
 
         self.failUnlessEqual(response.status_code, 200)
-        self.failUnlessEqual(response.content, 'my_callback()')
+        self.failUnlessEqual(response.content, '{"foo": "bar"}')
 
     def test_calling_registered_function_with_params(self):
 
         response = self.client.post('/dajaxice/dajaxice.tests.test_foo_with_params/', {'callback': 'my_callback', 'argv': '{"param1":"value1"}'})
 
         self.failUnlessEqual(response.status_code, 200)
-        self.failUnlessEqual(response.content, 'my_callback("value1")')
+        self.failUnlessEqual(response.content, '{"param1": "value1"}')
 
     def test_bad_function(self):
 
         response = self.client.post('/dajaxice/dajaxice.tests.test_ajax_exception/', {'callback': 'my_callback'})
         self.failUnlessEqual(response.status_code, 200)
-        self.failUnlessEqual(response.content, "my_callback('DAJAXICE_EXCEPTION')")
+        self.failUnlessEqual(response.content, "DAJAXICE_EXCEPTION")
 
     def test_is_callable(self):
 

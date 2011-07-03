@@ -43,7 +43,7 @@ from django.http import HttpResponse
 from dajaxice.core import dajaxice_functions
 from dajaxice.exceptions import FunctionNotCallableError, DajaxiceImportError
 
-log = logging.getLogger('dajaxice.DajaxiceRequest')
+log = logging.getLogger('dajaxice')
 
 # Python 2.7 has an importlib with import_module.
 # For older Pythons, Django's bundled copy provides it.
