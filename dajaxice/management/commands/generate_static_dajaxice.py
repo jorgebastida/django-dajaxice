@@ -47,7 +47,10 @@ class Command(BaseCommand):
     help = "Generate dajaxice.core.js file to import it as static file"
     args = "[--compile]"
     option_list = BaseCommand.option_list + (
-        make_option('--compile', default='no', dest='compile', help='Compile output using Google closure-compiler'),
+        make_option('--compile',
+                    default='no',
+                    dest='compile',
+                    help='Compile output using Google closure-compiler'),
     )
 
     requires_model_validation = False

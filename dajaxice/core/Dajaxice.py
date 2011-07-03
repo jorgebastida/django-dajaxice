@@ -92,7 +92,9 @@ class Dajaxice(object):
             self.register_function(function[0], function[1])
 
     def register(self, function):
-        self.register_function(function.__module__, function.__name__, function.__doc__)
+        self.register_function(function.__module__,
+                               function.__name__,
+                               function.__doc__)
 
     def register_function(self, module, name, doc=None):
         """
@@ -153,8 +155,8 @@ LOADING_DAJAXICE = False
 def dajaxice_autodiscover():
     """
     Auto-discover INSTALLED_APPS ajax.py modules and fail silently when
-    not present.
-    NOTE: dajaxice_autodiscover was inspired/copied from django.contrib.admin autodiscover
+    not present. NOTE: dajaxice_autodiscover was inspired/copied from
+    django.contrib.admin autodiscover
     """
     global LOADING_DAJAXICE
     if LOADING_DAJAXICE:

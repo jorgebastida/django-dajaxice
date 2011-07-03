@@ -49,7 +49,8 @@ def dajaxice_request(request, call):
 @cache_control(max_age=DajaxiceRequest.get_cache_control())
 def js_core(request):
     """
-    Return the dajax JS code according settings.DAJAXICE_FUNCTIONS registered functions.
+    Return the dajax JS code according settings.DAJAXICE_FUNCTIONS
+    registered functions.
     """
     data = {'dajaxice_js_functions': DajaxiceRequest.get_js_functions(),
             'DAJAXICE_URL_PREFIX': DajaxiceRequest.get_media_prefix(),
