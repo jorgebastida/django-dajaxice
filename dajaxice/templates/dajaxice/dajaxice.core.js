@@ -46,7 +46,7 @@ var Dajaxice = {
         oXMLHttpRequest.setRequestHeader("X-CSRFToken",Dajaxice.get_cookie('csrftoken'));
         oXMLHttpRequest.onreadystatechange = function() {
             if (this.readyState == XMLHttpRequest.DONE) {
-                if(this.responseText == Dajaxice.EXCEPTION || !(this.status in this.valid_http_responses())){
+                if(this.responseText == Dajaxice.EXCEPTION || !(this.status in Dajaxice.valid_http_responses())){
                     error_callback();
                 }
                 else{
