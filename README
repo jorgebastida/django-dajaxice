@@ -11,12 +11,7 @@ Dajaxice has the following aims:
   * Unobtrusive standard-compliant (W3C) XMLHttpRequest 1.0 object usage.
 
 Official site http://dajaxproject.com
-
-More information http://wiki.github.com/jorgebastida/django-dajaxice
-Installation http://wiki.github.com/jorgebastida/django-dajaxice/installation
-Examples http://github.com/jorgebastida/django-dajaxice/tree/master/examples/
-Available settings http://wiki.github.com/jorgebastida/django-dajaxice/available-settings
-Production environment http://wiki.github.com/jorgebastida/django-dajaxice/production-environment
+Documentation http://docs.dajaxproject.com/dajaxice/
 
 Dajaxice thanks:
     - Angel Abad for the package distribution.
