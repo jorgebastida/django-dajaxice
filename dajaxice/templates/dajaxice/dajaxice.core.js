@@ -50,12 +50,14 @@ var Dajaxice = {
                     error_callback();
                 }
                 else{
-                    try{
-                        dajaxice_callback(JSON.parse(this.responseText));
+                    var response;
+                    try {
+                        response = JSON.parse(this.responseText));
                     }
-                    catch(exception){
-                        dajaxice_callback(this.responseText);
+                    catch (exception) {
+                        response = this.responseText;
                     }
+                    dajaxice_callback(response);
                 }
             }
         }
