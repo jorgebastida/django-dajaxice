@@ -52,7 +52,7 @@ var Dajaxice = {
                 else{
                     var response;
                     try {
-                        response = JSON.parse(this.responseText));
+                        response = JSON.parse(this.responseText);
                     }
                     catch (exception) {
                         response = this.responseText;
