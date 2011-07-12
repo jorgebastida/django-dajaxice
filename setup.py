@@ -4,7 +4,7 @@ setup(
     name = "django-dajaxice",
     version = "0.2",
     author = "Benito Jorge Bastida Perez",
-    author_email = "jorge@thecodefarm.com",
+    author_email = "me@jorgebastida.com",
     description = "Agnostic and easy to use ajax library for django",
     download_url = "http://cloud.github.com/downloads/jorgebastida/django-dajaxice/django-dajaxice-0.2.tar.gz",
     url = "http://dajaxproject.com",
