@@ -33,8 +33,12 @@
 
 import httplib
 import urllib
+import os
 
 from django.core.management.base import BaseCommand
+from django.core.management import call_command
+from django.core.files.base import ContentFile
+from django.core.files.storage import FileSystemStorage
 from django.template.loader import render_to_string
 from optparse import make_option
 
@@ -45,12 +49,16 @@ dajaxice_autodiscover()
 
 class Command(BaseCommand):
     help = "Generate dajaxice.core.js file to import it as static file"
-    args = "[--compile]"
+    args = "[--compile --static=STATIC_FILE_NAME]"
     option_list = BaseCommand.option_list + (
         make_option('--compile',
                     default='no',
                     dest='compile',
                     help='Compile output using Google closure-compiler'),
+        make_option('--static',
+                    default=None,
+                    dest='static',
+                    help='Save output in dajaxice/static/'),
     )
 
     requires_model_validation = False
@@ -62,13 +70,33 @@ class Command(BaseCommand):
             'DAJAXICE_XMLHTTPREQUEST_JS_IMPORT': DajaxiceRequest.get_xmlhttprequest_js_import(),
             'DAJAXICE_JSON2_JS_IMPORT': DajaxiceRequest.get_json2_js_import(),
             'DAJAXICE_EXCEPTION': DajaxiceRequest.get_exception_message()}
-
+        
         js = render_to_string('dajaxice/dajaxice.core.js', data)
+        
         if compile_output.lower() == "closure":
-            print self.complie_js_with_closure(js)
+            out = self.complie_js_with_closure(js)
         else:
-            print js
-
+            out = js
+        
+        if options.get('static') is not None:
+            import dajaxice as base_module
+            staticpath = os.path.join(os.path.dirname(base_module.__file__), 'static', 'dajaxice')
+            staticfs = FileSystemStorage(staticpath)
+            staticname = options.get('static')
+            
+            # save javascript output in dajaxice/static/
+            print "+ Saving dajaxice javascript to %s ..." % os.path.join(staticpath, staticname)
+            if staticfs.exists(staticname):
+                staticfs.delete(staticname)
+            staticfs.save(staticname, ContentFile(out))
+            
+            # call collectstatic to move it into the project static files directory
+            print "+ Collecting the static output ..."
+            call_command('collectstatic', ignore=r"[^(dajaxice)]", interactive=False, verbosity=1)
+        
+        else:
+            print out
+    
     def complie_js_with_closure(self, js):
         params = urllib.urlencode([
             ('js_code', js),
