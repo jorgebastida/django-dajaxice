@@ -2,7 +2,7 @@
     {% for function in module.functions %}
             {% if function.doc and DAJAXICE_JS_DOCSTRINGS %}/* {{ function.doc|default:'' }}*/ {% endif %}
             {{ function.name }}: function(callback_function, argv, custom_settings){
-                Dajaxice.call('{{function.get_callable_path}}', callback_function, argv, custom_settings);
+                return Dajaxice.call('{{function.get_callable_path}}', callback_function, argv, custom_settings);
             }{% if not forloop.last %},{% endif %}
     {% endfor %}
             
