@@ -47,7 +47,7 @@ var Dajaxice = {
         oXMLHttpRequest.onreadystatechange = function() {
             if (this.readyState == XMLHttpRequest.DONE) {
                 if(this.responseText == Dajaxice.EXCEPTION || !(this.status in Dajaxice.valid_http_responses())){
-                    error_callback();
+                    error_callback(this);
                 }
                 else{
                     var response;
@@ -77,8 +77,10 @@ var Dajaxice = {
         return this.settings[key];
     },
 
-    default_exception_callback: function(data){
-        alert('Something goes wrong');
+    default_exception_callback: function(response){
+        alert('Something goes wrong:\n' + 
+	      'Status: ' + response.status + '\n' + 
+	      'Response text: '  response.responseText);
     },
 
     valid_http_responses: function(){
