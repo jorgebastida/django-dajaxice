@@ -79,8 +79,8 @@ var Dajaxice = {
 
     default_exception_callback: function(response){
         alert('Something goes wrong:\n' + 
-	      'Status: ' + response.status + '\n' + 
-	      'Response text: '  response.responseText);
+              'Status: ' + response.status + '\n' + 
+              'Response text: '  response.responseText);
     },
 
     valid_http_responses: function(){
