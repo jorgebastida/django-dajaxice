@@ -1,6 +1,6 @@
-*pyc
-deploy.sh
-MANIFEST
+*.pyc
+*.egg-info
+dist
+build
+.DS_Store
 docs/_build
-dist/
-build/
