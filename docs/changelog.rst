@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.5
+^^^
+* General Project clean-up
+* Django 1.3 is now a requirement
+
+
 0.2
 ^^^
 * Fix bug with the 'is_callback_a_function' variable in dajaxice.core.js
