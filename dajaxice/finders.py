@@ -8,6 +8,7 @@ from django.core.exceptions import SuspiciousOperation
 
 
 class VirtualStorage(finders.FileSystemStorage):
+    """" Mock a FileSystemStorage to build tmp files on demand."""
 
     def __init__(self, *args, **kwargs):
         self._files_cache = {}

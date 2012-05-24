@@ -1,3 +1,4 @@
+{% load url from future %}
 var Dajaxice = {
 
     {% with module=dajaxice_config.modules top='top' %}
@@ -36,7 +37,7 @@ var Dajaxice = {
         var send_data = 'argv='+encodeURIComponent(JSON.stringify(argv));
         var oXMLHttpRequest = new XMLHttpRequest;
 
-        oXMLHttpRequest.open(method, '{% url dajaxice-endpoint %}'+dajaxice_function+'/');
+        oXMLHttpRequest.open(method, '{% url 'dajaxice-endpoint' %}'+dajaxice_function+'/');
         oXMLHttpRequest.setRequestHeader("X-Requested-With", "XMLHttpRequest");
         oXMLHttpRequest.setRequestHeader("X-CSRFToken", Dajaxice.get_cookie('csrftoken'));
         oXMLHttpRequest.onreadystatechange = function() {

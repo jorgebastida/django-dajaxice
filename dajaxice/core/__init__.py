@@ -1,11 +1,11 @@
 from django.conf import settings
 
-from Dajaxice import Dajaxice
-from DajaxiceRequest import DajaxiceRequest
-from Dajaxice import dajaxice_autodiscover
+from Dajaxice import Dajaxice, dajaxice_autodiscover
 
 
 class DajaxiceConfig(object):
+    """ Provide an easy to use way to read the dajaxice configuration and
+    return the default values if no configuration is present."""
 
     default_config = {'DAJAXICE_MEDIA_PREFIX': 'dajaxice',
                       'DAJAXICE_DEBUG': False,
@@ -15,6 +15,9 @@ class DajaxiceConfig(object):
                       'DAJAXICE_EXCEPTION': 'DAJAXICE_EXCEPTION'}
 
     def __getattr__(self, name):
+        """ Return the customized value for a setting (if it exists) or the
+        default value if not. """
+
         if name in self.default_config:
             if hasattr(settings, name):
                 return getattr(settings, name)

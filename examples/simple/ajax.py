@@ -14,3 +14,8 @@ def hello(request):
 def bye(request):
     raise Exception("PUMMMM")
     return simplejson.dumps({'message': 'bye'})
+
+
+@dajaxice_register
+def lol(request):
+    return simplejson.dumps({'message': 'lol'})

@@ -9,10 +9,8 @@ setup(
     url='http://dajaxproject.com',
     license='BSD',
     packages=['dajaxice',
-               'dajaxice.templatetags',
-               'dajaxice.core',
-               'dajaxice.management',
-               'dajaxice.management.commands'],
+              'dajaxice.templatetags',
+              'dajaxice.core'],
     package_data={'dajaxice': ['templates/dajaxice/*']},
     long_description=("Easy to use AJAX library for django, all the "
                       "presentation logic resides outside the views and "

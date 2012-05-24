@@ -1,17 +1,14 @@
-import sys
 import logging
-import traceback
 
-from django.utils import simplejson
-from django.http import HttpResponse, Http404
 from django.conf import settings
+from django.utils import simplejson
+from django.views.generic.base import View
+from django.http import HttpResponse, Http404
 
 from dajaxice.exceptions import FunctionNotCallableError
 from dajaxice.core import dajaxice_functions, dajaxice_config
 
 log = logging.getLogger('dajaxice')
-
-from django.views.generic.base import View
 
 
 def safe_dict(d):
@@ -28,17 +25,20 @@ def safe_dict(d):
 
 
 class DajaxiceRequest(View):
+    """ Handle all the dajaxice xhr requests. """
 
     def dispatch(self, request, name=None):
 
         if not name:
             raise Http404
 
-        if dajaxice_functions.is_callable(name):
+        # Check if the function is callable
+        if dajaxice_functions.is_callable(name, request.method):
 
             function = dajaxice_functions.get(name)
             data = getattr(request, function.method).get('argv', '')
 
+            # Clean the argv
             if data != 'undefined':
                 try:
                     data = safe_dict(simplejson.loads(data))
@@ -47,6 +47,7 @@ class DajaxiceRequest(View):
             else:
                 data = {}
 
+            # Call the function. If something goes wrong, handle the Exception
             try:
                 response = function.call(request, **data)
             except Exception:
@@ -57,19 +58,3 @@ class DajaxiceRequest(View):
             return HttpResponse(response, mimetype="application/x-json")
         else:
             raise FunctionNotCallableError(name)
-
-    """
-    def notify_exception(self, request, exc_info):
-        from django.conf import settings
-        from django.core.mail import mail_admins
-
-        subject = 'Error (%s IP): %s' % ((request.META.get('REMOTE_ADDR') in settings.INTERNAL_IPS and 'internal' or 'EXTERNAL'), request.path)
-        try:
-            request_repr = repr(request)
-        except:
-            request_repr = "Request repr() unavailable"
-
-        trace = '\n'.join(traceback.format_exception(*(exc_info or sys.exc_info())))
-        message = "%s\n\n%s" % (trace, request_repr)
-        mail_admins(subject, message, fail_silently=True)
-    """

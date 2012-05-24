@@ -6,6 +6,7 @@ log = logging.getLogger('dajaxice')
 
 
 class DajaxiceFunction(object):
+    """ Basic representation of a dajaxice ajax function."""
 
     def __init__(self, function, name, method):
         self.function = function
@@ -13,10 +14,12 @@ class DajaxiceFunction(object):
         self.method = method
 
     def call(self, *args, **kwargs):
+        """ Call the function. """
         return self.function(*args, **kwargs)
 
 
 class DajaxiceModule(object):
+    """ Basic representation of a dajaxice module. """
 
     def __init__(self, name=None):
         self.name = name
@@ -24,6 +27,12 @@ class DajaxiceModule(object):
         self.submodules = {}
 
     def add(self, name, function):
+        """ Add this function at the ``name`` deep. If the submodule already
+        exists, recusively call the add method into the submodule. If not,
+        create the module and call the add method."""
+
+        # If this is not the final function name (there are more modules)
+        # split the name again an register a new submodule.
         if '.' in name:
             module, extra = name.split('.', 1)
             if module not in self.submodules:
@@ -37,8 +46,14 @@ class Dajaxice(object):
 
     def __init__(self):
         self._registry = {}
+        self._modules = None
 
     def register(self, function, name=None, method='POST'):
+        """
+        Register this function as a dajaxice function.
+
+        If no name is provided, the module and the function name will be used.
+        The final (customized or not) must be unique. """
 
         method = self.__clean_method(method)
 
@@ -64,24 +79,29 @@ class Dajaxice(object):
         # Register this new ajax function
         self._registry[name] = function
 
-    def is_callable(self, name):
-        return name in self._registry
+    def is_callable(self, name, method):
+        """ Return if the function callable or not. """
+        return name in self._registry and self._registry[name].method == method
 
     def __clean_method(self, method):
+        """ Clean the http method. """
         method = method.upper()
         if method not in ['GET', 'POST']:
             method = 'POST'
         return method
 
     def get(self, name):
+        """ Return the dajaxice function."""
         return self._registry[name]
 
     @property
     def modules(self):
-        modules = DajaxiceModule()
-        for name, function in self._registry.items():
-            modules.add(name, function)
-        return modules
+        """ Return an easy to loop module hierarchy with all the functions."""
+        if not self._modules:
+            self._modules = DajaxiceModule()
+            for name, function in self._registry.items():
+                self._modules.add(name, function)
+        return self._modules
 
 LOADING_DAJAXICE = False
 
