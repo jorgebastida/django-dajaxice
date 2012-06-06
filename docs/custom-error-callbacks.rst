@@ -5,9 +5,6 @@ Custom error callbacks
 How dajaxice handle errors
 ------------------------------
 
-.. note::
-    New in **django-dajaxice 0.2**
-
 When one of your functions raises an exception dajaxice returns as response the ``DAJAXICE_EXCEPTION`` message.
 On every response ``dajaxice.core.js`` checks if that response was an error or not and shows the user a default
 error message ``Something goes wrong``.

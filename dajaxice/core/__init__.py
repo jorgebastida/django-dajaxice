@@ -7,12 +7,10 @@ class DajaxiceConfig(object):
     """ Provide an easy to use way to read the dajaxice configuration and
     return the default values if no configuration is present."""
 
-    default_config = {'DAJAXICE_MEDIA_PREFIX': 'dajaxice',
-                      'DAJAXICE_DEBUG': False,
-                      'DAJAXICE_NOTIFY_EXCEPTIONS': False,
-                      'DAJAXICE_XMLHTTPREQUEST_JS_IMPORT': True,
+    default_config = {'DAJAXICE_XMLHTTPREQUEST_JS_IMPORT': True,
                       'DAJAXICE_JSON2_JS_IMPORT': True,
-                      'DAJAXICE_EXCEPTION': 'DAJAXICE_EXCEPTION'}
+                      'DAJAXICE_EXCEPTION': 'DAJAXICE_EXCEPTION',
+                      'DAJAXICE_MEDIA_PREFIX': 'dajaxice'}
 
     def __getattr__(self, name):
         """ Return the customized value for a setting (if it exists) or the
@@ -23,6 +21,10 @@ class DajaxiceConfig(object):
                 return getattr(settings, name)
             return self.default_config.get(name)
         return None
+
+    @property
+    def dajaxice_url(self):
+        return r'^%s/' % self.DAJAXICE_MEDIA_PREFIX
 
     def modules(self):
         return dajaxice_functions.modules

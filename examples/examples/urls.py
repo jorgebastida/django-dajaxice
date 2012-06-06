@@ -18,7 +18,7 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
-    (r'^%s/' % dajaxice_config.DAJAXICE_MEDIA_PREFIX, include('dajaxice.urls')),
+    (dajaxice_config.dajaxice_url, include('dajaxice.urls')),
     url(r'', 'simple.views.index')
 )
 
