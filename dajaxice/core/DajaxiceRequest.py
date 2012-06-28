@@ -79,7 +79,10 @@ class DajaxiceRequest(object):
         self.request = request
 
         self.project_name = os.environ['DJANGO_SETTINGS_MODULE'].split('.')[0]
-        self.module = "%s.ajax" % self.app_name
+		self.module = "%s" % self.app_name
+        implicit_module = getattr(settings, 'DAJAXICE_IMPLICIT_MODULE_NAME', "ajax")
+        if implicit_module: 
+            self.module += '.' + implicit_module
         self.full_name = "%s.%s" % (self.module, self.method)
 
     @staticmethod
