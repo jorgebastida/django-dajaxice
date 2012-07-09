@@ -1,5 +1,5 @@
 Production Environment
-=======================
+======================
 
 Since ``0.5`` dajaxice takes advantage of ``django.contrib.staticfiles`` so deploying a dajaxice application live is much easy than in previous versions.
 
