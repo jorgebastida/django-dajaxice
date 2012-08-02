@@ -58,6 +58,7 @@ var Dajaxice = {
             }
         }
         oXMLHttpRequest.send(send_data);
+        return oXMLHttpRequest;
     },
 
     setup: function(settings)

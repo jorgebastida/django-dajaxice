@@ -1,0 +1,12 @@
+Glue is mainly developed and maintained by Jorge Bastida <me@jorgebastida.com>
+
+A big thanks to all the contributors:
+Angel Abad for the Debian and Ubuntu distribution package.
+Denis Darii <denis.darii@gmail.com>
+Florian Le Goff <florian@9h37.fr>
+Youen Péron <@youen>
+Clément Nodet <clement.nodet@gmail.com>
+
+And the authors of:
+XmlHttpRequest.js project (License inside COPYING)
+json2.js Library (License inside COPYING)

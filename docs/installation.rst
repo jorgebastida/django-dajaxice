@@ -48,7 +48,7 @@ Add a new line in urls.py urlpatterns with this code::
 
     urlpatterns = patterns('',
         ...
-        (dajaxice_config.dajaxice_url, include('dajaxice.urls')),
+        url(dajaxice_config.dajaxice_url, include('dajaxice.urls')),
         ...
     )
 
