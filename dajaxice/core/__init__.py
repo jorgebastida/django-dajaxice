@@ -26,6 +26,7 @@ class DajaxiceConfig(object):
     def dajaxice_url(self):
         return r'^%s/' % self.DAJAXICE_MEDIA_PREFIX
 
+    @property
     def modules(self):
         return dajaxice_functions.modules
 
