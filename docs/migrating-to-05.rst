@@ -11,7 +11,7 @@ Dajaxice ``0.5`` requires ``django>=1.3``, so in order to make dajaxice work you
 
 
 Make django static-files work
-------------------------------
+-----------------------------
 
 Add this at the beginning of your ``urls.py`` file::
 

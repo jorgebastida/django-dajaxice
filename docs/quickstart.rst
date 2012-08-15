@@ -2,7 +2,7 @@ Quickstart
 ==========
 
 Create your first ajax function
-------------------------------
+-------------------------------
 Create a file named ``ajax.py`` inside any of your apps. For example ``example/ajax.py``.
 
 Inside this file create a simple function that return json.::
@@ -22,7 +22,7 @@ Now you'll need to register this function as a dajaxice function using the ``daj
         return simplejson.dumps({'message':'Hello World'})
 
 Invoque it from your JS
----------------------------
+-----------------------
 
 You can invoque your ajax fuctions from javascript using:
 

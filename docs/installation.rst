@@ -1,9 +1,9 @@
 Installation
-===========================================
+============
 Follow this instructions to start using dajaxice in your django project.
 
 Installing dajaxice
---------------------------
+-------------------
 
 Add `dajaxice` in your project settings.py inside ``INSTALLED_APPS``::
 
@@ -37,7 +37,7 @@ Ensure that ``TEMPLATE_CONTEXT_PROCESSORS`` has ``django.core.context_processors
     )
 
 Configure dajaxice url
-------------------------
+----------------------
 
 Add the following code inside urls.py::
 
@@ -61,7 +61,7 @@ and adding this line to the bottom of your urls.py::
     urlpatterns += staticfiles_urlpatterns()
 
 Install dajaxice in your templates
--------------------------------------
+----------------------------------
 Dajaxice needs some JS to work. To include it in your templates, you should load ``dajaxice_templatetags`` and use ``dajaxice_js_import`` TemplateTag inside your head section. This TemplateTag will print needed js.
 
 .. code-block:: html
@@ -80,5 +80,5 @@ Dajaxice needs some JS to work. To include it in your templates, you should load
 This templatetag will include all the js dajaxice needs.
 
 Use Dajaxice!
---------------------------
+-------------
 Now you can create your first ajax function following the :doc:`quickstart`.
