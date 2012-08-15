@@ -4,7 +4,15 @@ Changelog
 0.5
 ^^^
 * General Project clean-up
-* Django 1.3 is now a requirement
+* Django>=1.3 is now a requirement
+* Fixed numerous CSRF issues
+* Dajaxice now use django.contrib.staticfiles
+* Fix SERVER_ROOT_URL issues
+* Fixed js_core issues accepting multiple arguments
+* New upgraded documentation
+* Marketing site (http://dajaxproject.com) is now open-source
+* Fix JS generation issues
+* Travis-ci integration
 
 
 0.2
