@@ -55,7 +55,7 @@ class Dajaxice(object):
         If no name is provided, the module and the function name will be used.
         The final (customized or not) must be unique. """
 
-        method = self.__clean_method(method)
+        method = self.clean_method(method)
 
         # Generate a default name
         if not name:
@@ -83,7 +83,7 @@ class Dajaxice(object):
         """ Return if the function callable or not. """
         return name in self._registry and self._registry[name].method == method
 
-    def __clean_method(self, method):
+    def clean_method(self, method):
         """ Clean the http method. """
         method = method.upper()
         if method not in ['GET', 'POST']:
