@@ -29,6 +29,7 @@ Documentation
    quickstart
 
    custom-error-callbacks
+   utils
    production-environment
    migrating-to-05
    available-settings
