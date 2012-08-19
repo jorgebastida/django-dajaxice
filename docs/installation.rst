@@ -36,6 +36,14 @@ Ensure that ``TEMPLATE_CONTEXT_PROCESSORS`` has ``django.core.context_processors
         'django.contrib.messages.context_processors.messages'
     )
 
+Add ``dajaxice.finders.DajaxiceFinder`` to ``STATICFILES_FINDERS``::
+
+    STATICFILES_FINDERS = (
+        'django.contrib.staticfiles.finders.FileSystemFinder',
+        'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+        'dajaxice.finders.DajaxiceFinder',
+    )
+
 Configure dajaxice url
 ----------------------
 
