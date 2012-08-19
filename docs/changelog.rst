@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.5.1
+^^^^^
+* Make django-dajaxice work with django 1.3
+* Fix installation steps
+* Update json2.js
+
 0.5
 ^^^
 * General Project clean-up
