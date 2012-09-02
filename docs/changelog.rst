@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.5.2
+^^^^^
+* Fix GET dajaxice requests in order to send args as part of the url.
+
 0.5.1
 ^^^^^
 * Make django-dajaxice work with django 1.3
