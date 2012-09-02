@@ -19,3 +19,8 @@ def bye(request):
 @dajaxice_register
 def lol(request):
     return simplejson.dumps({'message': 'lol'})
+
+
+@dajaxice_register(method='GET')
+def get_args(request, foo):
+    return simplejson.dumps({'message': 'hello get args %s' % foo})

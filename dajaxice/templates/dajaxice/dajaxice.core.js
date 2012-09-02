@@ -34,10 +34,14 @@ var Dajaxice = {
             error_callback = custom_settings['error_callback'];
         }
 
-        var send_data = 'argv='+encodeURIComponent(JSON.stringify(argv));
-        var oXMLHttpRequest = new XMLHttpRequest;
+        var send_data = 'argv='+encodeURIComponent(JSON.stringify(argv)),
+            oXMLHttpRequest = new XMLHttpRequest,
+            endpoint = '{% url 'dajaxice-endpoint' %}'+dajaxice_function+'/';
 
-        oXMLHttpRequest.open(method, '{% url 'dajaxice-endpoint' %}'+dajaxice_function+'/');
+        if(method == 'GET'){
+            endpoint = endpoint + '?' + send_data;
+        }
+        oXMLHttpRequest.open(method, endpoint);
         oXMLHttpRequest.setRequestHeader("X-Requested-With", "XMLHttpRequest");
         oXMLHttpRequest.setRequestHeader("X-CSRFToken", Dajaxice.get_cookie('csrftoken'));
         oXMLHttpRequest.onreadystatechange = function() {
@@ -57,7 +61,12 @@ var Dajaxice = {
                 }
             }
         }
-        oXMLHttpRequest.send(send_data);
+        if(method == 'POST'){
+            oXMLHttpRequest.send(send_data);
+        }
+        else{
+            oXMLHttpRequest.send();
+        }
         return oXMLHttpRequest;
     },
 
