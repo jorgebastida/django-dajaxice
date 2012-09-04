@@ -44,8 +44,8 @@ class VirtualStorage(finders.FileSystemStorage):
         for f in self.files:
             if f.startswith(path):
                 f = f.replace(path, '', 1)
-                if '/' in f:
-                    folders.append(f.split('/', 1)[0])
+                if os.sep in f: 
+                    folders.append(f.split(os.sep, 1)[0])
                 else:
                     files.append(f)
         return folders, files
