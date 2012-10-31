@@ -60,7 +60,7 @@ class VirtualStorage(finders.FileSystemStorage):
 
 class DajaxiceStorage(VirtualStorage):
 
-    files = {'dajaxice/dajaxice.core.js': 'dajaxice_core_js'}
+    files = {'dajaxice' + os.sep + 'dajaxice.core.js': 'dajaxice_core_js'}
 
     def dajaxice_core_js(self):
         from dajaxice.core import dajaxice_autodiscover, dajaxice_config
@@ -68,7 +68,7 @@ class DajaxiceStorage(VirtualStorage):
         dajaxice_autodiscover()
 
         c = Context({'dajaxice_config': dajaxice_config})
-        return get_template('dajaxice/dajaxice.core.js').render(c)
+        return get_template('dajaxice' + os.sep + 'dajaxice.core.js').render(c)
 
 
 class DajaxiceFinder(finders.BaseStorageFinder):
