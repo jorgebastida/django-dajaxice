@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.5.4
+0.5.3
 ^^^^^
 * Fix some Windows bugs.
 * Fix some JS generation errros.
