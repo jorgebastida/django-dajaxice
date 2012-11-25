@@ -48,13 +48,15 @@ class DajaxiceRequest(View):
                 data = {}
 
             # Call the function. If something goes wrong, handle the Exception
+            status = 200
             try:
                 response = function.call(request, **data)
             except Exception:
                 if settings.DEBUG:
                     raise
                 response = dajaxice_config.DAJAXICE_EXCEPTION
+                status = 500
 
-            return HttpResponse(response, mimetype="application/x-json")
+            return HttpResponse(response, status=status, mimetype="application/json")
         else:
             raise FunctionNotCallableError(name)

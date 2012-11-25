@@ -9,6 +9,7 @@ class DajaxiceConfig(object):
 
     default_config = {'DAJAXICE_XMLHTTPREQUEST_JS_IMPORT': True,
                       'DAJAXICE_JSON2_JS_IMPORT': True,
+                      'DAJAXICE_JS_LIBRARY': 'default',
                       'DAJAXICE_EXCEPTION': 'DAJAXICE_EXCEPTION',
                       'DAJAXICE_MEDIA_PREFIX': 'dajaxice'}
 

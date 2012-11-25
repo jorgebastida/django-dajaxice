@@ -15,6 +15,7 @@ Dajaxice has the following aims:
 
 * Isolate the communication between the client and the server.
 * JS Framework agnostic (No Prototype, JQuery... needed ).
+* Special support for frameworks (JQuery, currently) if requested).
 * Presentation logic outside the views (No presentation code inside ajax functions).
 * Lightweight.
 * Crossbrowsing ready.
