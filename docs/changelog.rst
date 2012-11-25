@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.5.4
+^^^^^
+* Fix some Windows bugs.
+
 0.5.2
 ^^^^^
 * Fix GET dajaxice requests in order to send args as part of the url.

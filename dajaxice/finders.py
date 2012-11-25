@@ -44,7 +44,7 @@ class VirtualStorage(finders.FileSystemStorage):
         for f in self.files:
             if f.startswith(path):
                 f = f.replace(path, '', 1)
-                if os.sep in f: 
+                if os.sep in f:
                     folders.append(f.split(os.sep, 1)[0])
                 else:
                     files.append(f)
@@ -60,7 +60,7 @@ class VirtualStorage(finders.FileSystemStorage):
 
 class DajaxiceStorage(VirtualStorage):
 
-    files = {'dajaxice/dajaxice.core.js': 'dajaxice_core_js'}
+    files = {os.path.join('dajaxice', 'dajaxice.core.js'): 'dajaxice_core_js'}
 
     def dajaxice_core_js(self):
         from dajaxice.core import dajaxice_autodiscover, dajaxice_config
