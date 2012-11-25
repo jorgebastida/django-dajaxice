@@ -27,6 +27,10 @@ class DajaxiceConfig(object):
         return r'^%s/' % self.DAJAXICE_MEDIA_PREFIX
 
     @property
+    def django_settings(self):
+        return settings
+
+    @property
     def modules(self):
         return dajaxice_functions.modules
 
