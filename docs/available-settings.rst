@@ -36,3 +36,13 @@ Default data sent when an exception occurs.
 Defaults to ``"DAJAXICE_EXCEPTION"``
 
 Optional: ``True``
+
+DAJAXICE_JS_LIBRARY
+------------------
+
+Library to use for making AJAX calls. By default, XMLHttpRequest is used directly,
+but if you set this to "jquery", jqXHR will be used and returned instead.
+
+Defaults to ``"default"``
+
+Optional: ``True``
