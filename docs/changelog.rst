@@ -4,6 +4,8 @@ Changelog
 0.5.4
 ^^^^^
 * Fix some Windows bugs.
+* Fix some JS generation errros.
+* Make dajaxice use CSRF_COOKIE_NAME.
 
 0.5.2
 ^^^^^
