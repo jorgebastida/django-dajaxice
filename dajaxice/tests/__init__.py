@@ -137,7 +137,7 @@ class DjangoIntegrationTest(TestCase):
     def test_bad_function(self):
 
         response = self.client.post('/dajaxice/dajaxice.tests.test_ajax_exception/')
-        self.failUnlessEqual(response.status_code, 200)
+        self.failUnlessEqual(response.status_code, 500)
         self.failUnlessEqual(response.content, "DAJAXICE_EXCEPTION")
 
     def test_get_register(self):
