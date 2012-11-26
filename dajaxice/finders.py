@@ -19,7 +19,6 @@ class VirtualStorage(finders.FileSystemStorage):
             return ''
 
         data = getattr(self, self.files[path])()
-
         try:
             current_file = open(self._files_cache[path])
             current_data = current_file.read()
@@ -28,7 +27,8 @@ class VirtualStorage(finders.FileSystemStorage):
                 os.remove(path)
                 raise Exception("Invalid data")
         except Exception:
-            handle, tmp_path = tempfile.mkstemp()
+            suffix = '.{suf}'.format(suf=path.split('.')[-1]) if '.' in path else ''
+            handle, tmp_path = tempfile.mkstemp(suffix=suffix)
             tmp_file = open(tmp_path, 'w')
             tmp_file.write(data)
             tmp_file.close()
