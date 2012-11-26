@@ -11,6 +11,7 @@
 
         jqxhr = $.ajax({
             url: '{% url 'dajaxice-endpoint' %}'+dajaxice_function+'/',
+            type: method,
             data: 'argv='+encodeURIComponent(JSON.stringify(argv)),
             dataType: 'json',
             success: function(data) { dajaxice_callback(data); },
