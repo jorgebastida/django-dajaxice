@@ -5,7 +5,7 @@
     {% with filename="dajaxice/dajaxice_module_loop.js" module=sub_module %}
         {% include filename %}
     {% endwith %}
-    {% if not forloop.last %}y,y{% endif %}
+    {% if not forloop.last %},{% endif %}
     {% endfor %}
     }
     {% if not parent_foorloop.last %},{% endif %}
