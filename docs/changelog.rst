@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.5.4.1
+^^^^^^^
+* Fix JS generation errors.
+
 0.5.4
 ^^^^^
 * Fix JS generation errors.

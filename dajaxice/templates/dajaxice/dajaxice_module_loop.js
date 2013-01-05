@@ -8,5 +8,4 @@
     {% if not forloop.last %},{% endif %}
     {% endfor %}
     }
-    {% if not parent_foorloop.last %},{% endif %}
     {% endwith %}
