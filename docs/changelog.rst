@@ -5,6 +5,8 @@ Changelog
 ^^^^^
 * Return XMLHttpRequest from concreate functions as well as from function call.
 * Fixed django 1.5 compatibility: Content-Type have to be application/x-www-form-urlencoded otherwise Django discards POST data.
+* Fix JS generation errors
+* Fix @dajaxice_register legacy decorator
 
 0.5.4.1
 ^^^^^^^
