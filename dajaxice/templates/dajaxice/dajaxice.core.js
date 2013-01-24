@@ -6,7 +6,8 @@ var Dajaxice = {
     {% endwith %}
 
     {% for name, module in dajaxice_config.modules.submodules.items %}
-    {% include "dajaxice/dajaxice_module_loop.js" %}{% endfor %}{% if dajaxice_config.modules.submodules %},{% endif %}
+    {% include "dajaxice/dajaxice_module_loop.js" %},
+    {% endfor %}
 
     get_cookie: function(name)
     {
