@@ -35,8 +35,9 @@ def dajaxice_register(*dargs, **dkwargs):
     """
 
     if len(dargs) and not dkwargs:
-        dajaxice_functions.register(*dargs)
-        return dargs
+        function = dargs[0]
+        dajaxice_functions.register(function)
+        return function
 
     def decorator(function):
         @functools.wraps(function)
