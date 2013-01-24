@@ -10,7 +10,7 @@ env:
   - DJANGO=https://github.com/django/django/tarball/stable/1.5.x
 
 install:
-  - pip install -q Django==$DJANGO --use-mirrors
+  - pip install -q $DJANGO --use-mirrors
   - pip install https://github.com/jorgebastida/django-app-test-runner/zipball/master
 
 script:
