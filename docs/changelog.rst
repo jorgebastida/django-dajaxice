@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.5.5
+^^^^^
+* Return XMLHttpRequest from concreate functions as well as from function call.
+* Fixed django 1.5 compatibility: Content-Type have to be application/x-www-form-urlencoded otherwise Django discards POST data.
+
 0.5.4.1
 ^^^^^^^
 * Fix JS generation errors.
