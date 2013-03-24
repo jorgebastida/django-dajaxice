@@ -1,8 +1,8 @@
 try: 
-    from django.conf.urls import *
+    from django.conf.urls import url, patterns
 except ImportError: 
     # for Django version less then 1.4
-    from django.conf.urls.defaults import *
+    from django.conf.urls.defaults import url, patterns
 from .views import DajaxiceRequest
 
 urlpatterns = patterns('dajaxice.views',
