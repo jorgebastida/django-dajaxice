@@ -120,7 +120,10 @@ def dajaxice_autodiscover():
     import imp
     from django.conf import settings
 
-    for app in settings.INSTALLED_APPS:
+    app = settings.ROOT_URLCONF.split('.', 1)[0]
+    apps = settings.INSTALLED_APPS+(app,)
+
+    for app in apps:
 
         try:
             app_path = import_module(app).__path__
