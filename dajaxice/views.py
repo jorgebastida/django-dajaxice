@@ -41,7 +41,7 @@ class DajaxiceRequest(View):
             # Clean the argv
             if data != 'undefined':
                 try:
-                    data = safe_dict(simplejson.loads(data))
+                    data = safe_dict(json.loads(data))
                 except Exception:
                     data = {}
             else:
