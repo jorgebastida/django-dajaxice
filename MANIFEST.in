@@ -1,8 +1,6 @@
 include *.py
-include CHANGELOG
 include COPYING
-include INSTALL
-include MANIFEST.in
+include AUTHORS
 recursive-include dajaxice *
 recursive-exclude dajaxice *.pyc
 recursive-include examples *
