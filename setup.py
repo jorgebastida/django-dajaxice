@@ -17,9 +17,6 @@ setup(
                       "doesn't require any JS Framework. Dajaxice uses the "
                       "unobtrusive standard-compliant (W3C) XMLHttpRequest "
                       "1.0 object."),
-    install_requires=[
-        'Django>=1.3'
-    ],
     classifiers=['Development Status :: 4 - Beta',
                 'Environment :: Web Environment',
                 'Framework :: Django',
