@@ -1,7 +1,7 @@
 import logging
 
 from django.conf import settings
-from django.utils import simplejson
+import json
 from django.views.generic.base import View
 from django.http import HttpResponse, Http404
 
@@ -41,7 +41,7 @@ class DajaxiceRequest(View):
             # Clean the argv
             if data != 'undefined':
                 try:
-                    data = safe_dict(simplejson.loads(data))
+                    data = safe_dict(json.loads(data))
                 except Exception:
                     data = {}
             else:
@@ -55,6 +55,6 @@ class DajaxiceRequest(View):
                     raise
                 response = dajaxice_config.DAJAXICE_EXCEPTION
 
-            return HttpResponse(response, mimetype="application/x-json")
+            return HttpResponse(response, content_type="application/x-json")
         else:
             raise FunctionNotCallableError(name)
