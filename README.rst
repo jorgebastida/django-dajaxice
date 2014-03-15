@@ -27,7 +27,7 @@ In a word, No. I created this project 4 years ago as a cool tool in order to sol
 
 These days using this project is a bad idea.
 
-Perhaps my vision of how my django projects should be coupled to libraries like this has change, or perhaps these days I really treasure the purity and simplicity of a vanilla django development.
+Perhaps I'm more pragmatic now, perhaps my vision of how my django projects should be coupled to libraries like this has change, or perhaps these days I really treasure the purity and simplicity of a vanilla django development.
 
 If you want to mimic what this project does, you would only need some simple views and jQuery. Forget about adding more unnecessary complexity.
 
