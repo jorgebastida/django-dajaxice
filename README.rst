@@ -29,7 +29,9 @@ These days using this project is a bad idea.
 
 Perhaps I'm more pragmatic now, perhaps my vision of how my django projects should be coupled to libraries like this has change, or perhaps these days I really treasure the purity and simplicity of a vanilla django development.
 
-If you want to mimic what this project does, you would only need some simple views and jQuery. Forget about adding more unnecessary complexity.
+If you want to mimic what this project does, you would only need some simple views and jQuery.
+
+Forget about adding more unnecessary complexity.  Keep things simple.
 
 
 Project Aims
