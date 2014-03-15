@@ -15,6 +15,17 @@ Dajaxice is the communication core of dajaxproject. It's main goal is to trivial
 
 dajaxice is JS-framework agnostic and focuses on decoupling the presentation logic from the server-side logic. dajaxice only requieres 5 minutes to start working.
 
+
+Project status
+----------------
+From ``v0.6`` this project is not going to accept new features. In order to not break existing projects using this library, ``django-dajaxice`` will be maintained until ``django 1.8`` is released.
+
+
+Should I use django-dajaxice?
+------------------------------
+In a word, No. I created this project 4 years ago as a cool tool in order to solve one specific problem I had at that time. These days using this project is a bad idea. Perhaps my vision of how my django projects should be coupled to libraries like this, or perhaps these days I really treasure the purity and simplicity of a vanilla django development.
+
+
 Project Aims
 ------------
 
