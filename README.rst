@@ -23,7 +23,13 @@ From ``v0.6`` this project is not going to accept new features. In order to not 
 
 Should I use django-dajaxice?
 ------------------------------
-In a word, No. I created this project 4 years ago as a cool tool in order to solve one specific problem I had at that time. These days using this project is a bad idea. Perhaps my vision of how my django projects should be coupled to libraries like this, or perhaps these days I really treasure the purity and simplicity of a vanilla django development.
+In a word, No. I created this project 4 years ago as a cool tool in order to solve one specific problem I had at that time.
+
+These days using this project is a bad idea.
+
+Perhaps my vision of how my django projects should be coupled to libraries like this has change, or perhaps these days I really treasure the purity and simplicity of a vanilla django development.
+
+If you want to mimic what this project does, you would only need some simple views and jQuery. Forget about adding more unnecessary complexity.
 
 
 Project Aims
