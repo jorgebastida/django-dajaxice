@@ -1,6 +1,6 @@
 from django.conf import settings
 
-from Dajaxice import Dajaxice, dajaxice_autodiscover
+from .Dajaxice import Dajaxice, dajaxice_autodiscover
 
 
 class DajaxiceConfig(object):
