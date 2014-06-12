@@ -1,4 +1,4 @@
-from django.utils import simplejson
+import json as simplejson
 from dajaxice.decorators import dajaxice_register
 
 
