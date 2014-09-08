@@ -1,5 +1,5 @@
 import logging
-
+import django
 from django.conf import settings
 import json
 from django.views.generic.base import View
@@ -54,7 +54,9 @@ class DajaxiceRequest(View):
                 if settings.DEBUG:
                     raise
                 response = dajaxice_config.DAJAXICE_EXCEPTION
-
-            return HttpResponse(response, content_type="application/x-json")
+            if django.get_version() >= '1.7':
+                return HttpResponse(response, content_type="application/x-json")
+            else:
+                return HttpResponse(response, content_type="application/x-json")
         else:
             raise FunctionNotCallableError(name)
