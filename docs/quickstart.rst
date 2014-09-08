@@ -7,19 +7,19 @@ Create a file named ``ajax.py`` inside any of your apps. For example ``example/a
 
 Inside this file create a simple function that return json.::
 
-    from django.utils import simplejson
+    import json
 
     def sayhello(request):
-        return simplejson.dumps({'message':'Hello World'})
+        return json.dumps({'message':'Hello World'})
 
 Now you'll need to register this function as a dajaxice function using the ``dajaxice_register`` decorator::
 
-    from django.utils import simplejson
+    from django.utils import json
     from dajaxice.decorators import dajaxice_register
 
     @dajaxice_register
     def sayhello(request):
-        return simplejson.dumps({'message':'Hello World'})
+        return json.dumps({'message':'Hello World'})
 
 Invoque it from your JS
 -----------------------
@@ -46,12 +46,12 @@ How can I do a GET request instead of a POST one?
 
 When you register your functions as ajax functions, you can choose the http method using::
 
-    from django.utils import simplejson
+    from django.utils import json
     from dajaxice.decorators import dajaxice_register
 
     @dajaxice_register(method='GET')
     def saybye(request):
-        return simplejson.dumps({'message':'Bye!'})
+        return json.dumps({'message':'Bye!'})
 
 This function will be executed doing a GET request and not a POST one.
 
@@ -61,7 +61,7 @@ Can I combine both?
 
 Yes! You can register a function as many times as you want, for example::
 
-    from django.utils import simplejson
+    from django.utils import json
     from dajaxice.decorators import dajaxice_register
 
     @dajaxice_register(method='POST', name='user.update')
