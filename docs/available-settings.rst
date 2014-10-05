@@ -36,3 +36,12 @@ Default data sent when an exception occurs.
 Defaults to ``"DAJAXICE_EXCEPTION"``
 
 Optional: ``True``
+
+DAJAXICE_FETCH_CSRF_FROM_FIELD
+------------------------------
+
+Should we fetch the CSRF token from a form field? If False, then fetch from cookie.
+
+Defaults to ``False``
+
+Optional: ``True``

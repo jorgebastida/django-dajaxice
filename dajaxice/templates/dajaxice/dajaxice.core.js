@@ -26,6 +26,15 @@ var Dajaxice = {
         return cookieValue;
     },
 
+    get_csrf_id: function()
+    {
+    {% if dajaxice_config.DAJAXICE_FETCH_CSRF_FROM_FIELD %}
+        return document.getElementsByName('csrfmiddlewaretoken')[0].value;
+    {% else %}
+	    return Dajaxice.get_cookie('{{ dajaxice_config.django_settings.CSRF_COOKIE_NAME }}')
+    {% endif %}
+    },
+
     call: function(dajaxice_function, method, dajaxice_callback, argv, custom_settings)
     {
         var custom_settings = custom_settings || {},
@@ -45,7 +54,7 @@ var Dajaxice = {
         oXMLHttpRequest.open(method, endpoint);
         oXMLHttpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         oXMLHttpRequest.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-        oXMLHttpRequest.setRequestHeader("X-CSRFToken", Dajaxice.get_cookie('{{ dajaxice_config.django_settings.CSRF_COOKIE_NAME }}'));
+        oXMLHttpRequest.setRequestHeader("X-CSRFToken", Dajaxice.get_csrf_id());
         oXMLHttpRequest.onreadystatechange = function() {
             if (this.readyState == XMLHttpRequest.DONE) {
                 if(this.responseText == Dajaxice.EXCEPTION || !(this.status in Dajaxice.valid_http_responses())){
