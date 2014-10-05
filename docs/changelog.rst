@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.7
+^^^^^
+* Make ``django-dajaxice`` work with ``django 1.7``
+
 0.6
 ^^^^^
 * Make ``django-dajaxice`` work with ``django 1.6``
