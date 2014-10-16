@@ -1,5 +1,6 @@
 import os
 import tempfile
+import urllib
 
 from django.contrib.staticfiles import finders
 from django.template import Context
@@ -37,6 +38,7 @@ class VirtualStorage(finders.FileSystemStorage):
         return self._files_cache[path]
 
     def exists(self, name):
+        name = urllib.url2pathname(name)
         return name in self.files
 
     def listdir(self, path):
@@ -51,6 +53,7 @@ class VirtualStorage(finders.FileSystemStorage):
         return folders, files
 
     def path(self, name):
+        name = urllib.url2pathname(name)
         try:
             path = self.get_or_create_file(name)
         except ValueError:
