@@ -21,10 +21,10 @@ Now you'll need to register this function as a dajaxice function using the ``daj
     def sayhello(request):
         return json.dumps({'message':'Hello World'})
 
-Invoque it from your JS
+Invoke it from your JS
 -----------------------
 
-You can invoque your ajax fuctions from javascript using:
+You can invoke your ajax fuctions from javascript using:
 
 .. code-block:: javascript
 
