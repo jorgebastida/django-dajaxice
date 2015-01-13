@@ -28,7 +28,7 @@ def dajaxice_js_import(context, csrf=True):
     elif csrf:
         log.warning("The 'request' object must be accesible within the "
                     "context. You must add 'django.contrib.messages.context"
-                    "_processors.request' to your TEMPLATE_CONTEXT_PROCESSORS "
+                    "_processors.messages' to your TEMPLATE_CONTEXT_PROCESSORS "
                     "and render your views using a RequestContext.")
 
     url = staticfiles_storage.url('dajaxice/dajaxice.core.js')
