@@ -14,7 +14,7 @@ Inside this file create a simple function that return json.::
 
 Now you'll need to register this function as a dajaxice function using the ``dajaxice_register`` decorator::
 
-    from django.utils import json
+    import json
     from dajaxice.decorators import dajaxice_register
 
     @dajaxice_register
@@ -46,7 +46,7 @@ How can I do a GET request instead of a POST one?
 
 When you register your functions as ajax functions, you can choose the http method using::
 
-    from django.utils import json
+    import json
     from dajaxice.decorators import dajaxice_register
 
     @dajaxice_register(method='GET')
@@ -61,7 +61,7 @@ Can I combine both?
 
 Yes! You can register a function as many times as you want, for example::
 
-    from django.utils import json
+    import json
     from dajaxice.decorators import dajaxice_register
 
     @dajaxice_register(method='POST', name='user.update')
