@@ -1,5 +1,6 @@
 import logging
 import json
+import django
 
 from django.conf import settings
 from django.views.generic.base import View
