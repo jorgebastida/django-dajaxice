@@ -3,13 +3,13 @@ python:
   - "2.7"
 
 env:
-  - DJANGO=django==1.7
-  - DJANGO=django==1.8
-  - DJANGO=django==1.9
+  - DJANGO=django==1.7.11
+  - DJANGO=django==1.8.14
+  - DJANGO=django==1.9.9
   - DJANGO=django==1.10
 
 install:
-  - pip install -q $DJANGO --use-mirrors
+  - pip install -q $DJANGO 
   - pip install https://github.com/jorgebastida/django-app-test-runner/zipball/master
 
 script:
