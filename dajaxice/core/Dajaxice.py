@@ -1,7 +1,5 @@
 import logging
 
-from django.utils.importlib import import_module
-
 log = logging.getLogger('dajaxice')
 
 
@@ -117,21 +115,27 @@ def dajaxice_autodiscover():
         return
     LOADING_DAJAXICE = True
 
-    import imp
-    from django.conf import settings
+    import django
 
-    for app in settings.INSTALLED_APPS:
+    if django.VERSION[0:2] >= (1,7):
+        from django.utils.module_loading import autodiscover_modules
+        autodiscover_modules('ajax')
+    else:
+        import imp
+        from django.conf import settings
+        from django.utils.importlib import import_module
 
-        try:
-            app_path = import_module(app).__path__
-        except AttributeError:
-            continue
+        for app in settings.INSTALLED_APPS:
+            try:
+                app_path = import_module(app).__path__
+            except AttributeError:
+                continue
 
-        try:
-            imp.find_module('ajax', app_path)
-        except ImportError:
-            continue
+            try:
+                imp.find_module('ajax', app_path)
+            except ImportError:
+                continue
 
-        import_module("%s.ajax" % app)
+            import_module("%s.ajax" % app)
 
     LOADING_DAJAXICE = False
