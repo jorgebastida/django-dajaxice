@@ -49,7 +49,11 @@ var Dajaxice = {
         oXMLHttpRequest.onreadystatechange = function() {
             if (this.readyState == XMLHttpRequest.DONE) {
                 if(this.responseText == Dajaxice.EXCEPTION || !(this.status in Dajaxice.valid_http_responses())){
-                    error_callback();
+                    if('error_callback_argv' in custom_settings) {
+                        error_callback(custom_settings['error_callback_argv']);
+                    } else {
+                        error_callback();
+                    }
                 }
                 else{
                     var response;
