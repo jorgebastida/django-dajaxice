@@ -46,6 +46,7 @@ var Dajaxice = {
         oXMLHttpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         oXMLHttpRequest.setRequestHeader("X-Requested-With", "XMLHttpRequest");
         oXMLHttpRequest.setRequestHeader("X-CSRFToken", Dajaxice.get_cookie('{{ dajaxice_config.django_settings.CSRF_COOKIE_NAME }}'));
+        oXMLHttpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         oXMLHttpRequest.onreadystatechange = function() {
             if (this.readyState == XMLHttpRequest.DONE) {
                 if(this.responseText == Dajaxice.EXCEPTION || !(this.status in Dajaxice.valid_http_responses())){
