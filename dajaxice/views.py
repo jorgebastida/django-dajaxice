@@ -4,6 +4,7 @@ from django.conf import settings
 import json
 from django.views.generic.base import View
 from django.http import HttpResponse, Http404
+from distutils.version import StrictVersion
 
 from dajaxice.exceptions import FunctionNotCallableError
 from dajaxice.core import dajaxice_functions, dajaxice_config
@@ -54,9 +55,9 @@ class DajaxiceRequest(View):
                 if settings.DEBUG:
                     raise
                 response = dajaxice_config.DAJAXICE_EXCEPTION
-            if django.get_version() >= '1.7':
+            if StrictVersion(django.get_version()) >= StrictVersion('1.7'):
                 return HttpResponse(response, content_type="application/x-json")
             else:
-                return HttpResponse(response, mimetype="application/x-json")
+                return HttpResponse(response, content_type="application/x-json")
         else:
             raise FunctionNotCallableError(name)
